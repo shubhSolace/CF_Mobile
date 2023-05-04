@@ -15,9 +15,6 @@ declare var _ltk:any;
 declare var _ltk_util:any;
 declare var e:any;
 
-// import Frame from "../../assets/Frame.json";
-// import MatDetails from "../../assets/MatDetails.json";
-
 declare var gtag, $, paypal: any;
 @Component({
   selector: "app-home",
