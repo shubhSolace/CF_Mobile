@@ -1094,8 +1094,6 @@ export class HomeComponent implements OnInit {
         this.defaultParamObj.product_type = 78;
         this.defaultParamObj.frame_code = this.defaultParamObj.frameId;
         this.defaultParamObj.frameId = null;
-        // this.defaultParamObj.mat_code1 = "61";
-        // this.defaultParamObj.mat_code2 = "89";
       }
       if (this.defaultParamObj.pos_bottom != null) {
         this.pos_bottom = this.defaultParamObj.pos_bottom;
