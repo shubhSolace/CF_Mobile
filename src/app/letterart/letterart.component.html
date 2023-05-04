@@ -1,0 +1,1280 @@
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<div class="container">
+    <div class="col-xs-12 nopadding">
+        <!-- <div class="col-xs-12 nopadding white-bg">
+            <div class="col-xs-1 nopadding">
+                <p class="info-img" (click)="showInfoPopup('price');">
+                    <img src="https://cdn.arttoframe.com/images/info_icon.svg" class="img-responsive center-block">
+                </p>
+            </div>
+            <div class="col-xs-7 nopadding" (click)="showInfoPopup('price');">
+                <p class="product-name">Letter Art</p>
+            </div>
+            <div class="col-xs-4 nopadding" (click)="showInfoPopup('price');">
+                <p class="price-txt">$40.90</p>
+            </div>
+        </div> -->
+        <div class="col-xs-12 white-bg">
+            <div class="col-xs-2 nopadding " (click)='navigateToSearchPage()'>
+                <p class="BackArrowCls"><img src="{{Helper.cdn}}/images/BackArrow.png">&nbsp;Back</p>
+            </div>
+            <p class="info-img">
+                <img src="{{Helper.cdn1}}/images/info_outline_white.png?v=1"
+                    class="img-responsive center-block">
+            </p>
+            <div class="col-xs-7 nopadding" (click)="showInfoPopup('price');">
+
+                <p class="product-name">Letter Art</p>
+            </div>
+            <div class="col-xs-3 nopadding" (click)="showInfoPopup('price');">
+                <p class="price-txt" style="text-align: center;">${{totalPrice}}</p>
+            </div>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 nopadding paypal_clss" style="text-align:center;">
+            <div style="margin: 10px;" id="paylater_message_price_home" attr.data-pp-message
+                attr.data-pp-amount="{{totalPrice}}">
+            </div>
+        </div>
+        
+        <div class="col-xs-12 main-product-preview">
+            <div class="mainConatiner">
+                <div class="" id="previewPage">
+                    <div id="middlePanel">
+                        <div id="previewChild">
+                            <div id="preview_container">
+                                <div class="" id="framecode" style="display:none"></div>
+                                <div class="openingImg" style="display:none">
+                                    <a href="javascript:void(0);" class="settings-upload" id="settings-upload_0"><img
+                                            src="" id="opening_0"></a>
+                                </div>
+                                <canvas #tempCanvas id="tempCanvas" style="display:none;"> </canvas>
+                                <canvas #tempCanvasLetter id="tempCanvasLetter" style="display:none;"> </canvas>
+                                <canvas #rotateCanvas id="rotateCanvas" style="display:none;"></canvas>
+                                <canvas #swatchCanvas id="swatchCanvas" style="display:none;"></canvas>
+
+                                <img alt="" id="swatchResizedImg" style="display:none;" />
+                                <input type="hidden" name="myrotate" id="myrotate" value="" />
+                                <img hidden name="mainImageUrl" id="mainImageUrl" src="" />
+
+                                <select id="matWidth" style="display: none;">
+                                    <option>2</option>
+                                    <option>0</option>
+                                </select>
+
+                                <select id="finished_size_recommend" class="hidden"
+                                    name="finished_size_recommend"></select>
+
+                                <select id="recomended_frames" class="hidden" name="recomended_frames">
+
+                                </select>
+                                <div id="previewSlider" class="" style="position: relative;">
+
+
+                                    <div id="openingSelectorContainer" (click)="selectedImageForChange()"
+                                        style="background: transparent;z-index: 99;position: absolute;top: 0px!important;right: 0;left: 0px !important;bottom: 0;margin: auto;"
+                                        ngClass="{'active': toggle}"></div>
+
+                                    <ngx-carousel [inputs]="carouselBanner" (carouselLoad)="carouselBannerLoad($event)">
+
+                                        <ngx-item NgxCarouselItem class="bannerStyle">
+
+                                            <div id="preview" class="main-prevewcls">
+                                                <div style="position: absolute;z-index: 100;right: 0px;top: 32px; display:none;"
+                                                    id="info_log" (click)="showFrameInfo()">
+                                                    <img src="{{Helper.cdn4}}/images/info_logo.png"
+                                                        style="max-height: 378px;width: 90px;">
+                                                </div>
+
+
+                                                <canvas #innerlayerCanvas id="innerlayer-canvas" class="" width="160"
+                                                    height="200"
+                                                    style="position: absolute;top: 75px;left:0px;right:0px;margin:0 auto;z-index: 11;"></canvas>
+
+                                                <canvas #framecanvas id="framecanvas" width="323" height="428"
+                                                    style="position: absolute;"></canvas>
+                                                <canvas #imagelayercanvas id="imagelayer-canvas" class="" width="100"
+                                                    height="100"
+                                                    style=" position:absolute; top:86px; left:0px;right:0px;margin:0 auto;background: grey;z-index: 12;"></canvas>
+
+                                                <canvas #popupmatcanvas id="popupmatcanvas"
+                                                    style="position: absolute;top: 75px;left:0px;right:0px;margin:0 auto; display: none;"
+                                                    class="" width="239" height="279">
+                                                </canvas>
+
+                                                <canvas #groovecanvas id="groovecanvas"
+                                                    style="position: absolute;top: 75px;left:0px;right:0px;margin:0 auto;"
+                                                    class="" width="239" height="279">
+                                                </canvas>
+
+                                                <div class="overlay" data-cutid="0"> <span
+                                                        style="display:none;font-family: Montserrat Regular;color:#fff;font-size:10px;position:absolute">EDIT
+                                                        <br>
+                                                        IMAGE</span>
+                                                    <div class="innerLayer"></div>
+                                                </div>
+                                            </div>
+                                        </ngx-item>
+
+                                        <ngx-item NgxCarouselItem class="bannerStyle">
+                                            <div id="preview" class="equal-heights">
+                                                <img id="cornerPro" class="sliderImage"
+                                                    style="margin: 0px auto; max-height: 398px;max-width: 70%;"
+                                                    src="{{Helper.cdn2}}/products/frame/corner_profile/FRBW72079/500.jpg?v=23">
+                                            </div>
+                                        </ngx-item>
+
+                                        <ngx-item NgxCarouselItem class="bannerStyle">
+                                            <div id="preview" class="equal-heights">
+                                                <img id="cornerAngImage" class="sliderImage"
+                                                    style="margin: 0px auto; max-height: 398px;max-width: 70%;"
+                                                    src="{{Helper.cdn2}}/products/frame/corner_angle_image/FRBW72079/500.jpg?v=23">
+                                            </div>
+                                        </ngx-item>
+
+                                        <ngx-item NgxCarouselItem class="bannerStyle">
+                                            <div id="preview" class="equal-heights">
+                                                <img id="lifestyleImage" class="sliderImage"
+                                                    style="margin: 0px auto; max-height: 398px;max-width: 70%;"
+                                                    src="{{Helper.cdn2}}/products/frame/lifestyle_lifestyle_original/FRBW72079/500.jpg?v=90">
+                                            </div>
+                                        </ngx-item>
+
+                                        <ngx-item NgxCarouselItem class="bannerStyle">
+                                            <div id="preview" class="equal-heights">
+                                                <img id="glazeSliderImage" class="sliderImage"
+                                                    style="margin: 0px auto; max-height: 398px;max-width: 80%;"
+                                                    src="{{Helper.cdn2}}/products/glaze/new/small/14.png">
+                                            </div>
+                                        </ngx-item>
+
+                                        <ngx-item NgxCarouselItem class="bannerStyle">
+                                            <div id="preview" class="equal-heights">
+                                                <img id="cornerProSliderImage" class="sliderImage"
+                                                    style="margin: 0px auto; max-height: 378px;max-width: 70%;"
+                                                    src="{{Helper.cdn1}}/images/medium_made_in_brooklyn_usa.jpg">
+                                            </div>
+                                        </ngx-item>
+
+
+
+                                        <button NgxCarouselPrev class='leftRs'>&lt;</button>
+                                        <button NgxCarouselNext class='rightRs'>&gt;</button>
+                                    </ngx-carousel>
+
+
+
+                                </div>
+
+                                <div class="sliderContainer" style="display:none">
+                                    <div style="position:absolute; z-index:1; right: -14px;top: -6px; display:none;"
+                                        id="info_log_standard">
+                                        <img src="" />
+                                    </div>
+                                    <ul class="myslider" hidden>
+
+                                        <li id="swatch_image">
+                                            <a class="cornerFrame">
+                                                <img id="" class="frameCornerImg" src="">
+                                            </a>
+                                        </li>
+                                        <li id="corner_image">
+                                            <img class="frameCornerImg" src="">
+                                        </li>
+                                        <li id="profile_image">
+                                            <img class="frameCornerImg" src="">
+                                        </li>
+                                        <li id="wall_image">
+                                            <img class="frameCornerImg" src="">
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- ------------------ -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--========================================  -->
+
+        <button type="submit" class="hide-btn" style="display:none;">
+            <img src="{{Helper.cdn}}/images/CLOSE-ICON.png">&nbsp;Hide</button>
+        <div class="col-xs-12 nopadding">
+            <ul class="nav nav-tabs new-cf-tabs" style="display: block;z-index: 21; ">
+                <li class="size-section active">
+                    <a data-toggle="tab" id="showLetterArtpopup" (click)="showLetterArtpopup()" href="#size">
+                        <img src="{{Helper.cdn}}/images/{{tabImages.letterArtPopup}}">
+                    </a>
+                </li>
+                <li class="frame-section">
+                    <a data-toggle="tab" href="#frame" class="mylink" (click)="showFrames('frame'); " id="framesoption">
+                        <img src="{{Helper.cdn}}/images/{{tabImages.showFrames}}">
+                    </a>
+                </li>
+                
+                <li class="mat-section">
+                    <a data-toggle="tab" href="#mat" class="mylink" (click)="showMats('mat') ; " id="matoption">
+                        <img src="{{Helper.cdn}}/images/{{tabImages.showMats}}">
+                    </a>
+                </li>
+                <li class="decor-section">
+                    <a data-toggle="tab" href="#decor" class="mylink" (click)="showDecorativeMats(); " id="decoroption">
+                        <img src="{{Helper.cdn}}/images/{{tabImages.showDecorativeMats}}">
+                    </a>
+                </li>
+                <li class="glass-section">
+                    <a data-toggle="tab" href="#glass" class="mylink" (click)="showGlass(); " id="glassoption">
+                        <img src="{{Helper.cdn}}/images/{{tabImages.showGlass}}">
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-xs-12 BottomAddtocartHolder">
+            <!-- <div class="col-xs-4 rightpaddingZero">
+                <select class="Qty_cls" style="text-align: center;">
+                    <option value="1" disabled selected hidden>Qty 1</option>
+                    <option value="1"> 1</option>
+                    <option value="2"> 2</option>
+                    <option value="3"> 3</option>
+                    <option value="4"> 4</option>
+                    <option value="5"> 5</option>
+                </select>
+            </div> -->
+            <div class="col-xs-12 nopadding">
+                <button type="button" class="Btm_ATC_btn" (click)="showHardwarePopup()">ADD TO CART</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- letter art input modal -->
+<div id="textinputModal" class=" modal-bottom sizeTab1 modal fade-scale animated fadeIn " role="dialog"
+    data-backdrop="static" data-keyboard="false" [style.display]=textinputModalStyle.display style="z-index: 100">
+    <div class="modal-header noborder nopadding ">
+        <button type="submit" class="frame-hide-btn  update-hide-btn" (click)="btnHide()"><span
+                style="font-weight: normal;font-size: 18px;">&times; </span>Close</button>
+    </div>
+    <div class="modal-dialog new-dialog" style="height:auto;">
+        
+        <div class="modal-content custom-border" style="height:100%;">
+            <div class="modal-body" style="height:100%;">
+                <div class="col-xs-12 nopadding " *ngIf="!showtab">
+                    <div class="tab-content nopadding noborder">
+                        <div id="size">
+                            <div class="tab-content col-xs-12 noborder nopadding size-tab-content">
+                                <div id="single-opening" class="tab-pane tab-pane-cls col-xs-12 fade in active">
+                                    <div class="col-xs-12 nopadding">
+                                        <form (ngSubmit)="onGoUserText(inputtext.value)" #user_input="ngForm">
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-3 letterLable">
+                                                    YOUR WORD:
+                                                </div>
+                                                <div class="col-xs-6 height-dropdown1 nopadding">
+                                                    <input autofocus="true" type="text" class="a" id="inputtext"
+                                                        name="user-input-text" maxlength="10"
+                                                        ngModel="{{userInput | uppercase }}" pattern="[a-zA-Z]*"
+                                                        required #inputtext>
+
+                                                    <span class="help-block">
+                                                        Only Alphabets allowed!
+                                                    </span>
+                                                </div>
+                                                <div class="col-xs-1"></div>
+                                                <div class="col-xs-2">
+                                                    <button type="submit" class="btn-lg apply-btn-go"
+                                                        [disabled]="!user_input.valid">Go</button>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-3"></div>
+                                                <div class="col-xs-6">
+                                                    <button type="submit" class="apply-btn-random"
+                                                        [disabled]="!user_input.valid"
+                                                        style="padding: 1px 10px 0px 10px">Random images</button>
+                                                </div>
+                                                <div class="col-xs-3"></div>
+
+                                            </div>
+                                            <div class="col-xs-1"></div>
+                                            <div class="col-xs-5" style="margin-top: 8px;">
+                                                <span style="font-family:Montserrat SemiBold;font-size:14px;">IMAGE SIZE:</span>
+                                                <br>
+                                                <select (change)="getImageSize($event);" style="width: 100px;">
+                                                    <!-- <option value="">Image size</option> -->
+                                                    <option *ngFor="let size of imageSizesArray" value="{{size.alphabet_size}}">{{size.alphabet_size}}</option>
+                                                    <!-- <option value="5x7">5x7</option> -->
+                                                </select>
+                                            </div>
+                                            
+                                            <div class="col-xs-5" style="margin-top: 8px;">
+                                                <span style="font-family:Montserrat SemiBold;font-size:14px;">COLOR FILTER:</span>
+                                                <br>
+                                                <select (change)="getColorFilter($event);" style="width: 100px;">
+                                                    <!-- <option value="">Image size</option> -->
+                                                    <option value="normal">Normal</option>
+                                                    <option value="bw">Black & White</option>
+                                                    <option value="sepia">Sepia</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-xs-1"></div>
+                                            <!-- <input type="hidden" class="shipping-opening-height" id="customWidth"
+                                                value="4">
+                                            <input type="hidden" class="shipping-opening-height" id="customHeight"
+                                                value="6"> -->
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- letter art input modal end -->
+<!--Frame Modal sectiom -->
+<div id="frameModal" class=" modal-bottom modal fade-scale animated fadeIn" role="dialog" data-backdrop="static"
+    data-keyboard="false" style="z-index: 21;overflow: hidden;" [style.display]=frameModalStyle.display>
+    <div class="modal-dialog new-dialog">
+        <div class="modal-header noborder nopadding ">
+            <button type="submit" style="" class="frame-hide-btn  update-hide-btn" (click)="btnHide()"><span
+                    style="font-weight: normal;font-size: 18px;">&times; </span>Close</button>
+        </div>
+        <div class="modal-content custom-border" style="height:100%;">
+            <div class="modal-body">
+                <p style="display: none;" class="alert-frame-text" *ngIf="noFramess">
+                    No Frame available in this size <br> Please change size in size tab
+                </p>
+                <div class="col-xs-12 nopadding" style="margin-top: 4%;" id="frameSlider">
+                    <ul class="bxsliderCFWco" >
+                        <li *ngFor="let chunk of OnloadFrames ; let id = index" id="childeMat_33"
+                            class="clsChildMat matCont op_2 " attr.data-maxSize="{{chunk.finished_size}}"
+                            attr.data-width="{{chunk.framewidth}}" attr.lip_width="{{chunk.lip_width}}"
+                            attr.data-FCode="{{chunk.code}}">
+                            <div style="padding:0px 4px;" id="frame_{{chunk.code}}" class="chmat mat in_stock"
+                                attr.data-frameCode="{{chunk.code}}" attr.data-frameid="{{chunk.frame_id}}"
+                                attr.frame_name="{{chunk.name}}" attr.data-lip_width="{{chunk.lip_width}}"
+                                attr.data-width="{{chunk.framewidth}}" attr.data-materialId="{{chunk.material_class}}"
+                                attr.data-maxSize="{{chunk.finished_size}}" (click)="changeFrame(chunk)"
+                                data-opening="2">
+                                <!-- <img class="myFrame" id="myFrame_{{chunk.code}}" src="https://cdn2.arttoframe.com/products/image-corner-wom-tight/framed-art/wom/{{chunk.code}}/small/corner-image.jpg?v=25" alt=""> -->
+                                <img loading="lazy" [ngClass]="{'frame_active': frameCode == chunk.code}" class="myFrame"
+                                    id="myFrame_{{chunk.code}}"
+                                    src="{{Helper.cdn2}}/products/image-corner-wom-tight/framed-art/wom/{{chunk.code}}/small/corner-image.jpg?v=25"
+                                    src="" alt="">
+                                <p class="fname fname_{{chunk.code}}">{{chunk.name}}</p>
+                                <!-- <p class="frameprice-tag">$8.10</p> -->
+                            </div>
+                        </li>
+                        <!-- <div id="frame_loader">
+                            <img src="https://cdn1.arttoframe.com/images/loader-letterart.gif" width="auto" height="115px" alt="Random Images">
+                        </div> -->
+                    </ul>
+                    <div class="col-xs-12 BottomBorderFrames">
+                        <div class="col-xs-4 NoOFItemsDip">ITEMS: <span *ngIf="OnloadFrames?.length > 0 ">(
+                                {{OnloadFrames.length}}/314 )</span>
+                        </div>
+                        <div class="col-xs-8" class="sortList">
+                            <div class="col-xs-4 SortByDip nopadding" style="" (click)="getframeFilterColorsList()">
+                                <select id="selFrameColor" (change)="getFrameFilterColorsName();"
+                                    class="selFrameFilters">
+                                    <option value="0">Colors</option>
+                                    <option *ngFor=" let frameFN of frameFilter" [selected]="frameFilterID === frameFN.id" value="{{frameFN.id}}">
+                                        {{frameFN.color}}
+                                    </option>
+                                    <!-- <option value="17">Blue</option><option value="4">Brown</option> -->
+                                </select>
+                            </div>
+                            <!-- <div class="col-xs-1"></div> -->
+                            <div class="col-xs-4 SortByDip nopadding">
+                                <select id="myframe_sortby" (change)="getFrameSortData();">
+                                    <option value="">SORT BY </option>
+                                    <option value="ASC">Low to High Price </option>
+                                    <option value="DESC">High to Low Price</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- <div class="col-xs-1"></div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Mat Modal sectiom -->
+<div class="tooltiptextMat col-xs-12" style="display: none;">
+
+    <div class="col-sm-9" style="padding-right:0px;">
+        <p id="tooltipmsgMat">* Please note, all mat openings are cut roughly 1/4" smaller than the
+            size
+            entered. This is
+            to allow the mat to hold your picture in with out falling through the opening.</p>
+    </div>
+
+</div>
+<div id="matModal" class=" modal-bottom modal fade-scale animated fadeIn" role="dialog" data-backdrop="static"
+    data-keyboard="false" style="z-index: 100;" [style.display]=matModalStyle.display>
+    <div class="modal-dialog new-dialog">
+        <!-- Modal content-->
+        <div class="modal-header noborder nopadding ">
+            <button type="submit" style="" class="frame-hide-btn  update-hide-btn" (click)="btnHide()"><span
+                    style="font-weight: normal;font-size: 18px;">&times; </span>Close</button>
+        </div>
+        <div class="modal-content custom-border" style="height:150%;">
+            <div class="col-xs-12 nopadding" id="matButton">
+                    <!-- class="" -->
+                    <div id="doublemat">
+                        <ul class="nav nav-tabs MatTabsChild">
+                            <div class="matDetails">
+                                <div class="col-md-12 padding-top-bottom nopadding">
+                                    <!-- <div (click)="selectMats('nomats')" class="mat_none_option mat_none_tab col-md-3 col-xs-3 matClass mattabClass" id="mat_none_option" value="nomats" style="width: 25%; float: left;">
+                                        <img class="label_img" [ngClass]="{'active': selectedMatType === 'nomats'}" src="https://www.arttoframe.com/images/None-mat.svg">
+                                        <a href="javascript:void(0)">
+                                            <label class="switch" style="display: none;">
+                                                <input type="checkbox" id="nomats" name="nomats" data-value="nomats" checked>
+                                            </label>
+                                        </a>
+                                    </div> -->
+                                    <div (click)="selectMats('topmats')" class="mat_single_option mat_none_tab col-md-3 col-xs-3 matClass mattabClass" id="mat_single_option" style="width: 30%; margin-left: 25px;">
+                                        <img class="label_img" [ngClass]="{'active': selectedMatType === 'topmats'}" src="https://www.arttoframe.com/images/single-mat.svg">
+                                        <a href="javascript:void(0)">
+                                            <label class="switch" style="display: none;">
+                                                <input type="checkbox" id="topmats" name="topmats" data-value="topmats" checked>
+                                            </label>
+                                        </a>
+                                    </div>
+            
+                                    <div (click)="selectMats('bottommats')" class="mat_double_option mat_none_tab col-md-3 col-xs-3 matClass mattabClass" id="mat_double_option" style="width: 30%;">
+                                        <img class="label_img" [ngClass]="{'active': selectedMatType === 'bottommats'}" src="https://www.arttoframe.com/images/double-mat.svg">
+                                        <a href="javascript:void(0)">
+                                            <label class="switch" style="display: none;">
+                                                <input type="checkbox" id="bottommats" name="bottommats" data-value="bottommats" checked>
+                                            </label>
+                                        </a>
+                                    </div>
+                                    <div (click)="selectMats('tripplemats')" class="mat_triple_option mat_none_tab col-md-3 col-xs-3 matClass mattabClass" id="mat_triple_option" style="width: 30%;">
+                                        <img class="label_img" [ngClass]="{'active': selectedMatType === 'tripplemats'}" src="https://www.arttoframe.com/images/Triple-Mat.svg">
+                                        <a href="javascript:void(0)">
+                                            <label class="switch" style="display: none;">
+                                                <input type="checkbox" id="tripplemats" name="tripplemats" data-value="tripplemats" checked>
+                                            </label>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="titleTopBottomMat">
+								<!-- <div [hidden]="selectedMatType != 'nomats'" (click)="selectMatss('nomats'); selectMat('nomats');" class="disabled_tab noMatLi matClass col-md-3 col-xs-3 nonemat titleTopMat text-center" style="width: 25%;">
+									<div class="lblMats" id="lblNoMat">NO MAT</div>
+								</div> -->
+								<div [hidden]="selectedMatType === 'nomats'" data-tab="top" (click)="selectMatss('topmats'); selectMat('topmats');" class="disabled_tab topMatLi matClass col-md-3 col-xs-3 tmat titleTopMat text-center" style="width: 25%;">
+									<div class="onoffswitch hidden">
+										<input type="checkbox" name="bottom-color-color1idTxt" id="bottom-color-color1idTxt" class="onoffswitch-checkbox" value="1" checked="checked" />
+
+										<label class="onoffswitch-label" for="bottom-color-color1idTxt">
+											<span class="onoffswitch-inner"></span>
+											<span class="onoffswitch-switch"></span>
+										</label>
+									</div>
+									<div id="lbl1Mat" class="lblMats">TOP</div>
+								</div>
+								<div [hidden]="selectedMatType === 'nomats' || selectedMatType === 'topmats'" data-tab="bottom" (click)="selectMatss('bottommats'); selectMat('bottommats');" class="disabled_tab bottomMatLi matClass col-md-3 col-xs-3 bmat titleTopMat text-center" style="width: 25%; float: left;">
+									<div class="onoffswitch hidden">
+										<input type="checkbox" name="bottom-color-color2idTxt" id="bottom-color-color2idTxt" class="onoffswitch-checkbox" value="1">
+
+										<label class="onoffswitch-label" for="bottom-color-color2idTxt">
+										  <span class="onoffswitch-inner"></span>
+										  <span class="onoffswitch-switch"></span>
+										</label>
+									</div>
+									<div class="lblMats" id="lblSecondMat">BOTTOM</div>
+								</div>
+								<div [hidden]="selectedMatType != 'tripplemats'" data-tab="tripple" (click)="selectMatss('tripplemats'); selectMat('tripplemats');" class="disabled_tab trippleMatLi matClass col-md-3 col-xs-3 tripplemat deactive titleTopMat text-center" style="width: 25%; float: left;">
+									<div class="lblMats" id="lblThirdMat">BOTTOM</div>
+									<input type="checkbox" name="tripple-color3idTxt" id="tripple-color3idTxt" class="onoffswitch-checkbox" value="0" style='' />
+								</div>
+							</div>
+                        </ul>
+                    </div>
+                </div>
+
+            <span style="color: black;
+			font-size: 13px;
+			font-weight: bold;
+			background: transparent;
+			border: none;margin-left: 5px;" [hidden]="selectedMatType === 'nomats'">Items: <span *ngIf="dataMatsArray?.length > 0 ">(
+				{{dataMatsArray.length}}/62 )</span>
+			</span>
+            
+            <button type="submit" [hidden]="selectedMatType === 'nomats'" class="color-filterbtn">COLOR FILTER&nbsp;
+                <img src="{{Helper.cdn}}/images/color-filter.png">
+            </button>
+            <!-- <div class="mat_alert"> -->
+            <span id="more_info_note" [hidden]="selectedMatType === 'nomats'" (click)="tooltiptextMat()">&nbsp;<img
+                    src="{{Helper.cdn}}/images/info-icon-mat-only.png" alt=""
+                    style="height: 20px;margin-top: -3px;margin-left: 5px;"> More Info
+            </span>
+            <!-- </div> -->
+            <div class="modal-body">
+                <p style="display: none;" class="alert-mat-text">
+                    No Mat available in this size <br> Please change size in size tab
+                </p>
+                <div class="col-xs-12" style="padding-right: 0px;padding-top: 12px;padding-left: 0px;">
+                    <div *ngIf="selectedMatType === 'nomats'" class="no-mat-text">
+                        Select other mat options <br> to see available mat colors.
+                    </div>
+                    <div [hidden]="selectedMatType === 'nomats'">
+                    <ul class="bxsliderCFMat" id="matfilter">
+                        <li *ngFor=" let mat of dataMatsArray" id="childeMat_33" [class.disabledMats]="selectedMatType === 'nomats'" class="clsChildMat matCont op_2 "
+                            attr.data-size32x40="{{mat.size32x40}}" attr.data-size40x60="{{mat.size40x60}}"
+                            attr.data-size48x96="{{mat.size48x96}}" attr.data-matCode="{{mat.code}}">
+                            <div data-value="mats" (click)="changeMat(mat.code)" class="chmat mat in_stock"
+                                id="mat_{{mat.code}}">
+                                <img class="matRound" id="mymat_{{mat.code}}" src="" attr.data-src="{{Helper.cdn1}}/products/mats/images/200/{{mat.code}}.jpg" alt="">
+                                <div class="mat-border"></div>
+                                <img src="{{Helper.cdn1}}/images/Checkbox-CF-19.png"
+                                    [ngClass]="{'mat_active': selected_mat == mat.code}" class="mat-checkbox-green2"
+                                    id="selectedMat_{{mat.code}}">
+                                <!-- <p class="matName matName_{{mat.code}}" style="padding:5px 0px 0px 0px;">{{mat.crescent_name}} -->
+                                <p class="matName matName_{{mat.code}}" style="padding:5px 0px 0px 0px;">{{mat.name}}
+                                </p>
+                                <!-- <p>$10</p> -->
+                            </div>
+                        </li>
+                        <!-- <div id="mat_loader">
+                            <img src="https://cdn1.arttoframe.com/images/loader-letterart.gif" width="auto"
+                                height="80px" alt="Random Images">
+                        </div> -->
+                    </ul>
+                </div>
+                </div>
+                <!-- <div class="col-xs-12 nopadding" style="" id="matButton">
+                    <div id="doublemat" class="">
+                        <ul class="nav nav-tabs MatTabsChild1">
+                            <li class="bmat disabled_tab active" (click)="clickMats('topmats');" (change)="selectMats('topmats');" data-tab="top"
+                                style="width: 33%;" id="topMatLi">
+                                <a href="javascript:void(0)" class="">
+                                    <label class="switch">
+                                        <input type="checkbox" id="topmats" name="topmats" data-value="topmats" checked>
+                                        <span class="sliders round"></span>
+                                    </label>TOP MAT</a>
+                            </li>
+                            <li id="mattab_4" (click)="clickMats('bottommats');" (change)="selectMats('bottommats');" data-tab="bottom"
+                                class="bmat disabled_tab" style="width: 33%;" id="bottomMatLi">
+                                <a href="javascript:void(0)" class="bottommat-tab">
+                                    <label class="switch">
+                                        <input type="checkbox" id="bottommats" name="matoption" data-value="bottom"
+                                            checked> <span class="sliders round"></span>
+                                    </label>BOTTOM MAT</a>
+                            </li>
+                            <li id="mattab_4" (click)="clickMats('tripplemats');" (change)="selectMats('tripplemats');" data-tab="tripple"
+                                class="bmat disabled_tab" style="width: 33%; margin-left: 3px;" id="trippleMatLi">
+                                <a href="javascript:void(0)" class="tripplemat-tab">
+                                    <label class="switch">
+                                        <input type="checkbox" id="tripplemats" name="matoption" data-value="tripple"> <span class="sliders round"></span>
+                                    </label>TRIPPLE MAT</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+<!--Decor Modal sectiom -->
+<div id="decorModal" class="modal-bottom modal fade-scale animated fadeIn" role="dialog" data-backdrop="static"
+    data-keyboard="false" style="z-index: 100;" [style.display]=decorModalStyle.display>
+    <div class="modal-dialog new-dialog" style="height:auto;">
+        <div class="modal-header noborder nopadding ">
+            <button type="submit" style="" class="frame-hide-btn  update-hide-btn" (click)="btnHide()"><span
+                    style="font-weight: normal;font-size: 18px;">&times; </span>Close</button>
+        </div>
+        <!-- Modal content-->
+        <div class="modal-content custom-border" style="height:70%;">
+            <div class="modal-body" style="height:100%;">
+                <div id="size" class="tab-pane active">
+                    <ul class="nav nav-tabs size-sub-tabs decor-subtabs">
+                        <li class="active vgrooveSection" style="width:100%"><a data-toggle="tab" href="#engraving"
+                                class="engraving-tab">ENGRAVING
+                                <img src="{{Helper.cdn1}}/images/info_outline_white.png?v=1"
+                                    style="width:23px;height:23px;cursor: pointer;" class="decorinfo-img"
+                                    id="vgroove_info" (click)="showInfoPopup('vgroove');">
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content col-xs-12 noborder nopadding decor-tab-content">
+                        <div id="engraving" class="tab-pane fade in active">
+                            <div class="col-xs-12 nopadding">
+                                <div class="col-xs-12 ">
+                                    <ul class="bxsliderCFWco" style="padding: 10px 0px;">
+                                        <li id="childeMat_33" class="text-center clsChildMat matCont op_2 ">
+                                            <div data-value="mats" class="chmat mat in_stock">
+                                                <div class="toggleCommenDiv"> <span
+                                                        id="fancyAllowTextOn">&nbsp;On</span>
+                                                </div>
+                                                <div style="padding: 0px 0px 0px;" (change)="vgrooveSwitch();">
+                                                    <label class="fancyswitch" style="margin-top:2px;">
+                                                        <input class="fancyCheckbox" id="vgrooveCheckbox"
+                                                            name="vgrooveCheckbox" type="checkbox"><span
+                                                            class="fancyslider fancyround"></span><span>&nbsp;</span>
+                                                    </label>
+                                                </div>
+                                                <div class="toggleCommenDiv"> <span id="fancyAllowTextOff"
+                                                        style="color: rgb(105, 105, 105);">&nbsp;Off</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li *ngFor=" let vgroove of vgrooveArr" id="childeMat_33"
+                                            class="clsChildMat matCont op_2 ">
+
+                                            <div data-value="mats" class="chmat mat in_stock"
+                                                (click)="applyVGroove(vgroove.vGrooveId);"
+                                                attr.vgroovCode="{{vgroove.vGrooveCode}}"
+                                                id="vgroov_{{vgroove.vGrooveId}}">
+
+                                                <img style="width:75px;" class="" id="mymat"
+                                                    src="{{Helper.cdn2}}/custom_framing/preview/actions/vgroovthumb/thumb_trans_vrgroov_{{vgroove.vGrooveId}}.png"
+                                                    alt="">
+                                                <img _ngcontent-wvv-c1=""
+                                                    class="mat-checkbox-green2 vgrooveSelect_{{vgroove.vGrooveId}}"
+                                                    src="{{Helper.cdn1}}/images/Checkbox-CF-19.png">
+                                            </div>
+                                            <!-- <p class="engraving-price">+$10.00</p> -->
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--glass Modal Section -->
+<div id="glassModal" class="modal-bottom modal fade-scale animated fadeIn" role="dialog" data-backdrop="static"
+    data-keyboard="false" style="z-index: 100;" [style.display]=glassModalStyle.display>
+    <div class="modal-dialog new-dialog" style="  height: 134px;">
+        <div class="modal-header noborder nopadding ">
+            <button type="submit" style="" class="frame-hide-btn  update-hide-btn" (click)="btnHide()"><span
+                    style="font-weight: normal;font-size: 18px;">&times; </span>Close</button>
+        </div>
+        <!-- Modal content-->
+        <div class="modal-content custom-border" style="height:100%;">
+            <div class="modal-body" style="height:100%;">
+                <div id="glass" class="tab-pane fade  active in">
+                    <div class="col-xs-12 openingphotDiv glassDiv" id="glassContainer">
+                        <div class="col-xs-12 glass-selec-drpdownParent">
+                            <div class=" col-xs-4 nopadding">
+                                <p class="GlassTypeTxt">Glass type</p>
+                            </div>
+                            <div class=" col-xs-8 nopadding">
+                                <ul class="nav nav-tabs glassSuboptions">
+                                    <li class="col-xs-6 glass_only active" style="width: 50%;padding:0px;"><a
+                                            data-toggle="tab" data-tab="glass" href="#glass"
+                                            class="glasstab_newUI">GLASS</a>
+                                    </li>
+                                    <li class="col-xs-6 glass_plexi nopadding" style="width: 50%;"><a data-toggle="tab"
+                                            data-tab="plexiglass" href="#plexiglass"
+                                            class="plexiTab_newUI plexiTab_newUI_main">PLEXI GLASS</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="tab-content col-xs-12 nopadding GlassTabContent_nw">
+                            <div id="glass" class="col-xs-12 nopadding tab-pane fade active in">
+                                <div class="col-xs-12 dropdownArea_cf">
+                                    <div class=" col-xs-4 nopadding">
+                                        <p class="GlassTypeTxt">Quality</p>
+                                    </div>
+                                    <div class="col-xs-8 GlassDrpDwn_Select">
+                                        <p (click)="showGlassPoup()" id="glass_only_name" style="font-size: 18px;">
+                                            Regular Glass</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="plexiglass" class="col-xs-12 nopadding tab-pane fade ">
+                                <div class="col-xs-12 dropdownArea_cf">
+                                    <div class=" col-xs-4 nopadding">
+                                        <p class="GlassTypeTxt">Quality</p>
+                                    </div>
+                                    <div class="col-xs-8 GlassDrpDwn_Select">
+                                        <p (click)="showGlassPoup()" id="glass_plexi_name" style="font-size: 18px;">
+                                            Styrene</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Glass popup -->
+<div class="modal fade in" id="glassPopup" aria-hidden="true" [style.display]=glassPopup.display
+    style="z-index:10000;top:30px;left: -15px">
+    <div class="modal-dialog hdwdialogCF fullwidthdialog">
+        <div class="modal-content nobordercls">
+            <div class="modal-body nopadding">
+                <div class="container nopadding TabMediaWidth">
+                    <div class="row nomargin" style="margin:0px;padding-right: 15px;">
+                        <div class="col-xs-12 nopadding">
+                            <p class="detailPopupClose glassdetailpopup" (click)="btnHideInfo()">
+                                <img src="{{Helper.cdn1}}/images/back-btn-cf.png">&nbsp;Back</p>
+                            <p class="hdwTitleCF-glass1" id="glsPopupTitle">Choose Your Glass</p>
+                        </div>
+                        <div *ngFor="let glass of glassArr"
+							class="col-xs-12 glassType_{{glass.glass_type}} applicableGlass_{{glass.code}}"
+							style="padding:15px;">
+							<div class="col-xs-12 main-area-glass nopadding">
+								<div class="col-xs-12 glass-area traverse_{{glass.code}}"
+									(click)="glassPopupToggle(glass.code)" attr.max_size1="{{glass.max_size1}}"
+									attr.min_size2="{{glass.max_size2}}" attr.defaultGlass="{{glass.default_glass}}"
+									attr.gRating="{{glass.rating}}">
+									<p class="glass-name">{{glass.name}}</p>
+									<!-- <p class="glass-price">price:${{glass.priceperfoot}}</p> -->
+									<p class="glass-price"><span class="read-details">Read details</span> <span
+											style="float:right;" class="glassPriceDifference_{{glass.code}}"></span>
+									</p>
+									<div class="col-xs-6 nopadding">
+										<p class="quality-tag">Quality: <span
+												*ngFor="let index of [glass.rating];let j = index">
+												<span *ngIf="index == 5">
+													<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+													<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+													<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+													<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+													<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+												</span>
+												<span *ngIf="index == 4">
+													<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+													<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+													<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+													<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+												</span>
+												<span *ngIf="index == 3">
+													<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+													<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+													<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+												</span>
+												<span *ngIf="index == 2">
+													<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+													<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+												</span>
+												<span *ngIf="index == 1">
+													<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+												</span>
+											</span>
+											<!-- <span><img src="https://cdn3.arttoframe.com/images/star_black.png"></span>
+							    					<span><img src="https://cdn3.arttoframe.com/images/star_black.png"></span>
+							    					<span><img src="https://cdn3.arttoframe.com/images/star_black.png"></span> -->
+										</p>
+									</div>
+									<div class="col-xs-6 nopadding">
+										<p style="text-align:right;margin: 0px;">
+											<button type="submit" id="Tglass_{{glass.code}}"
+												class="confrim-btn selectedGlass_{{glass.code}} confirmGlass"
+												style="display:none;"
+												(click)="glassPopupConfirmBtn(glass.code);">Confirm</button>
+										</p>
+									</div>
+									<div class="col-xs-6 nopadding">
+										<p style="text-align:right;margin: 0px;">
+											<!-- <button class="see-more-btn seeMoreBtn_{{glass.code}}">See More</button> -->
+											<button *ngIf="selectedGlassVal != glass.code"
+												class="see-more-btn select-btn seeMoreBtn_{{glass.code}}">Select</button>
+										</p>
+									</div>
+								</div>
+								<div class="col-xs-12 traversing_{{glass.code}} glassShowHide" style="display:none;">
+									<img src="{{glass.image}}"
+										class="img-responsive center-block">
+									<ul *ngFor=" let dd of glass.text_description"
+										class="glass-description glasDescription_{{glass.code}}">
+										<li>{{dd}}</li>
+										<!-- <li>Standard indoor-framing protective material</li>
+												<li>Partial UV protection for prints exposed to sunlight</li>
+															<li>Scratch resistant</li>  -->
+									</ul>
+								</div>
+							</div>
+						</div>
+                        <!-- <div *ngFor=" let glass of glassArr"
+                            class="col-xs-12 glassType_{{glass.glass_type}} applicableGlass_{{glass.code}}"
+                            style="padding:15px;">
+                            <div class="col-xs-12 main-area-glass nopadding">
+                                <div class="col-xs-12 glass-area traverse_{{glass.code}}"
+                                    (click)="glassPopupToggle(glass.code)" attr.max_size1="{{glass.max_size1}}"
+                                    attr.min_size2="{{glass.max_size2}}" attr.defaultGlass="{{glass.default_glass}}"
+                                    attr.gRating="{{glass.rating}}">
+                                    <p class="glass-name">{{glass.name}}</p>
+                                    <p class="glass-price"><span class="read-details">Read details</span> <span
+                                            style="float:right;" class="glassPriceDifference_{{glass.code}}"></span>
+                                    </p>
+                                    <div class="col-xs-6 nopadding">
+                                        <p class="quality-tag">Quality: <span
+                                                *ngFor="let index of [glass.rating];let j = index">
+                                                <span *ngIf="index == 5">
+                                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                </span>
+                                                <span *ngIf="index == 4">
+                                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                </span>
+                                                <span *ngIf="index == 3">
+                                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                </span>
+                                                <span *ngIf="index == 2">
+                                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                </span>
+                                                <span *ngIf="index == 1">
+                                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                </span>
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <div class="col-xs-6 nopadding">
+                                        <p style="text-align:right;margin: 0px;">
+                                            <button type="submit" id="Tglass_{{glass.code}}"
+                                                class="confrim-btn selectedGlass_{{glass.code}} confirmGlass"
+                                                style="display:none;"
+                                                (click)="glassPopupConfirmBtn(glass.code);">Confirm</button>
+                                        </p>
+                                    </div>
+                                    <div class="col-xs-6 nopadding">
+                                        <p style="text-align:right;margin: 0px;">
+                                            <button
+                                                class="see-more-btn select-btn seeMoreBtn_{{glass.code}}">Select</button>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 traversing_{{glass.code}} glassShowHide" style="display:none;">
+                                    <img src="{{glass.image}}"
+                                        class="img-responsive center-block">
+                                    <ul *ngFor=" let dd of glass.text_description"
+                                        class="glass-description glasDescription_{{glass.code}}">
+                                        <li>{{dd}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--MAT ENGRAVING--->
+<div class="modal fade in" id="mat_engraving_popup" style="z-index: 10000;display: none;" aria-hidden="true"
+    [style.display]=infomodalStyle.vgrooveDisplay>
+    <div class="modal-dialog Product-dialogCF">
+        <div class="modal-header noborder nopadding">
+        </div>
+        <div class="modal-content">
+            <div class="modal-body nopadding">
+                <div class="container nopadding TabMediaWidth">
+                    <div class="row nomargin" style="margin:0px;">
+                        <div class="col-xs-12 nopadding">
+                            <p class="hdwTitleCF">MAT ENGRAVING<span class="detailPopupClose"
+                                    (click)="btnHideInfo();"><img
+                                        src="{{Helper.cdn1}}/images/close-hdw-CF.png"></span>
+                            </p>
+                        </div>
+                        <div class="col-xs-12">
+                            <img src="{{Helper.cdn1}}/images/engraving_img.png"
+                                class="img-responsive center-block mat_env_img">
+                        </div>
+                        <div class="col-xs-12 engraving_txt">
+                            <p>Looking to add a touch elegance and class to your framed item? We now offer mat engraving
+                                for a classic touch that can be added to any mat of your choice.
+                                <br>
+                                <br>The V-groove cut will add beautiful and subtle contrast to any mat by cutting one of
+                                our classic decorations. Upgrade your mat with this feature for added depth and
+                                character.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Hardware Popup -->
+<div class="modal fade in" id="hardwarepopup" style="display: none;left: -15px" aria-hidden="false"
+    [style.display]=hardwarepopupStyle.display>
+    <div class="modal-dialog hdwdialogCF fullwidthdialog" style="height:100%;">
+        <div class="modal-content nobordercls" style="height:100%;">
+            <div class="modal-body nopadding">
+                <div class="container nopadding TabMediaWidth">
+                    <div class="row nomargin" style="margin:0px;">
+                        <div class="col-xs-12 nopadding">
+                            <p (click)="btnHideInfo();"> <span
+                                    class="detailPopupClose detailPopupClosehd2">&times;</span>
+                            </p>
+                            <p class="hdwTitleCF-glass1" style="padding: 19px 0px;color: #001F32;">Hardware options</p>
+                        </div>
+                        <div class="col-xs-12 hardwarePopupContent" style="padding: 0px 25px;">
+                            <div *ngFor=" let hardwareInfo of hardwareData"
+                                class="col-xs-12 hardwareCFOptionParent hardwareId_{{ hardwareInfo.id }}">
+                                <div class="col-xs-8 hdwtitleOptions"> <a href="javascript:void(0);"
+                                        id="hardware_{{ hardwareInfo.id }}"
+                                        class="hardwareCFOption removeHardware active"
+                                        (click)="selectHardware(hardwareInfo.id, true)"> {{ hardwareInfo.name }}
+                                        <br><span class="hardwarePrice_{{ hardwareInfo.id }}"></span> <input
+                                            type="radio" name="hardware_id" value="1" checked="checked"
+                                            id="hardware_{{ hardwareInfo.id }}" class="hidden size_90_90"
+                                            data-max-size1="90" data-max-size2="90">
+                                    </a>
+
+                                    <div class="install_it_me_options" *ngIf="hardwareInfo?.install">
+                                        <div class="tooltip" [ngStyle]="{'background-color': selectedHardwareId === hardwareInfo.id ? 'rgb(77, 195, 41)' : ''}">Install It For Me 
+                                            <!-- <span class="tooltiptext"><a href="#">Horizontal</a></span> -->
+                                            <div class="tooltiptext">
+                                                <div class="checkbox">
+                                                    <label><input class="check" (click)="selectHardware(hardwareInfo.id, false);selectInstall(hardwareInfo.id, $event);" style="margin: 3px 0px 0 -21px !important;" type="checkbox" value="1">Vertical</label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label><input class="check2" (click)="selectHardware(hardwareInfo.id, false);selectInstall(hardwareInfo.id, $event);" style="margin: 3px 0px 0 -21px !important;" type="checkbox" value="2">Horizontal</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4 nopadding imgHrd">
+                                    <img src="{{ hardwareInfo.image }}" data-src="{{ hardwareInfo.image }}"
+                                        style="max-width:85%;border-radius:50%">
+                                </div>
+                            </div>
+                            <p class="text-center col-xs-12" style="padding: 0px 0px 0px;margin:0px;"><a
+                                    href="javascript:void(0);" class="confirm-Opening" id="confirmhardware"
+                                    (click)="addToCart();">CONFIRM</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="colorfilter" class="modal fade" role="dialog">
+    <div class="modal-dialog new-dialog" style="height: 110%;">
+        <!-- Modal content-->
+        <div class="modal-content custom-border">
+            <div class="modal-header noborder" style="padding:10px 0px;">
+                <a class="back-btn-colorfilter">
+                    <img src="{{Helper.cdn}}/images/back-btn-cf.png">&nbsp;Back</a>
+            </div>
+            <div class="modal-body">
+                <div class="col-xs-12">
+                    <p class="matcolor-filter">Select by mat color</p>
+                    <ul class="matcolor-list" id="matF">
+                        <li><a href="javascript:void(0);" class="matfilter-name-active matFilterCls"
+                                (click)="selectMatFilter('0');" id="matColor_0">Select</a>
+                        </li>
+                        <li *ngFor=" let matFilter of matFilter"><a href="javascript:void(0);"
+                                class="matfilter-name matFilterCls" (click)="selectMatFilter(matFilter.id);"
+                                id="matColor_{{matFilter.id}}"> {{matFilter.color}} </a>
+                        </li>
+
+                    </ul>
+                    <!-- <button type="submit" class="confirm-Opening-popup" id="matfilter-confirm" (click)="showMats('filter');">Confirm</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="uploadImageDiv hidden" id="myUpload">
+    <input type="file" value="Select" id="browse" class="hidden" />
+    <input type="file" name="qqfiles[]" multiple id="fileSelector" accept="image/*" class="hidden" />
+    <div id="thumbnail-fine-uploader"></div>
+</div>
+<div id="progressModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress blue"> <span class="progress-left">
+                        <span class="progress-bar"></span>
+                    </span> <span class="progress-right">
+                        <span class="progress-bar"></span>
+                    </span>
+                    <div class="progress-value">90%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- random Image Modal -->
+<div id="randomImageModal" class="modal " role="dialog" style="min-height: 500px"
+    [style.display]=randomImageModalStyle.display>
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row nomargin">
+                        <div class="col-xs-12">
+                            <p _ngcontent-c1="" class="detailPopupClose glassdetailpopup" id="Bck-rndImgMdl"
+                                (click)="btnHideInfo();">
+                                <img _ngcontent-c1=""
+                                    src="{{Helper.cdn1}}/images/back-btn-cf.png">&nbsp;Back</p>
+                        </div>
+
+                        <div class="randomImagesLoader" style="display: none;">
+                            <div>
+                                <img src="{{Helper.cdn1}}/images/loader-letterart.gif" width="auto"
+                                    height="200" alt="Random Images" style="">
+                            </div>
+                        </div>
+
+                        <div class="randomImages col-xs-12" id="randomImages" style="display: none;">
+                            <table border="0" cellspacing="0" cellpadding="0">
+                                <thead colspan="2">
+                                    <h4>Click To Select</h4>
+                                </thead>
+                                <!-- <tr>
+                                    <td> -->
+                                        <div *ngFor=" let imgData of randomLetterResult">
+                                            <div class="letter_thumb" (click)="selectImage(imgData.image_name)">
+                                                <img src="{{ imgData.name_to_use }}">
+                                            </div>
+                                        </div>
+                                    <!-- </td>
+                                </tr> -->
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!------>
+<div id="infomodal1" class="modal " role="dialog" [style.display]=infomodalStyle.priceDisplay>
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row nomargin">
+                        <div class="col-xs-12">
+                            <p _ngcontent-c1="" class="detailPopupClose glassdetailpopup" id="Bck-info-price"
+                                (click)="btnHideInfo();">
+                                <img _ngcontent-c1=""
+                                    src="{{Helper.cdn1}}/images/back-btn-cf.png">&nbsp;Back</p>
+                            <p class="hdwTitleCF-glass1">PRODUCT DETAILS<span class="detailPopupClose"><img
+                                        src="{{Helper.cdn1}}/images/close-hdw-CF.png"></span>
+                            </p>
+                        </div>
+                        <div class="col-xs-12 product-detailsTxt">
+                            <li class="framecodedetail">Frame ID: <span>CF-105-048C</span>
+                            </li>
+                            <li class="framenamedetail">Frame Name: <span>Smooth Black</span>
+                            </li>
+                            <li class="framematerialdetail">Frame Material: <span>MDF</span>
+                            </li>
+                            <br>
+                            <li class="finishedsizedetail">Finished Size: <span>10x12</span>
+                            </li>
+                            <li class="openingsizedetail">Opening Size: <span>8x10</span>
+                            </li>
+                            <br>
+                            <li class="topmatcolordetail">Top Mat Color: <span> Super White</span>
+                            </li>
+                            <li class="bottommatcolordetail">Bottom Mat Color: <span> Super White</span>
+                            </li>
+                            <li class="thirdmatcolordetail">Third Mat Color: <span> Super White</span>
+                            </li>
+                            <br>
+                            <li class="glassdetail">Glass: <span>Regular Glass</span>
+                            </li>
+                            <li class="hardwaredetail">Hardware: <span>Saw tooth hanger </span>
+                            </li>
+                            <br>
+                            <li class="price">Price : <span id="popupPrice">$9.25</span>
+                            </li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--  -->
+
+<div class="addToCartLoader" style="display: none;">
+    <div>
+        <img src="{{Helper.cdn1}}/images/loader-letterart.gif" width="50" height="50" alt="Adding to Cart">
+        <span>Adding to cart...</span>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal_maxsize" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <img src="https://www.arttoframe.com/custom_framing/preview/images/cf_max_size_validation.png"
+                    height="60" width="60" style="display: block;
+    margin-left: auto;
+    margin-right: auto;">
+                <h3
+                    style="text-align: center; color:#0095DA;font-size: 24px;margin-top: 20px;margin-bottom:10px;font-family: 'Product Sans',Arial,sans!important">
+                    Not available in this size</h3>
+                <h4
+                    style="text-align: center; color:#0095DA;font-size: 18px;margin-top: 10px;margin-bottom: 10px;font-family: 'Product Sans',Arial,sans!important">
+                    Please choose a new frame from the left side.</h4>
+                <h5
+                    style="text-align: center; color: red;font-size: 14px;margin-top: 10px;margin-bottom: 10px;font-family: 'Product Sans',Arial,sans!important">
+                    {{maxFrameSize}} </h5>
+            </div>
+            <div class="modal-footer" style="padding: 15px;">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="infoPopup" style="margin-top: 60px;">
+    <div class="modal-dialog Product-dialogCF">
+        <div class="modal-content">
+            <div class="modal-body nopadding">
+                <div class="container nopadding TabMediaWidth">
+                    <div class="row nomargin" style="margin:0px;">
+                        <div class="col-xs-12 nopadding">
+                            <p class="hdwTitleCF">
+                                <!--  <span class="detailPopupClose">
+                                    <img src="https://cdn.arttoframe.com/images/CLOSE-ICON.png">
+                                </span> -->
+                                <span style="position: initial;left: -240px;top: 2px;">
+                                    <img src="{{Helper.cdn1}}/images/info_outline_white.png?v=1"> NOTE
+                                </span>
+                            </p>
+                        </div>
+
+                        <div class="col-xs-12 product-detailsTxt" id="ProductPageNote"
+                            style="line-height: 1.5;font-size: 20px;font-family: 'Product Sans', Arial, sans-serif !important;text-align: center;">
+                            {{ frameNote }}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- cart  model  -->
+<div class="modal fade AddingToCart_modal" id="AddingToCart_modal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="ATC_area">
+
+                    <div class="lds-ring">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <p class="cart_title">Adding to cart</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade AddingToCart_success" id="AddingToCart_success" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="ATC_area">
+                    <img src="https://www.arttoframe.com/images/Check_20.png" class="img-responsive center-block">
+
+                    <p class="cart_titles">Item added to cart</p>
+                    <a href="https://www.arttoframe.com/cart" class="Checkout_btn"><img
+                            src="https://www.arttoframe.com/images/checkout-button_20.svg" alt=""
+                            class="img-responsive center-block"></a>
+                    <a (click)="reload()" class="keepshopping_btn"><img
+                            src="https://www.arttoframe.com/images/keep-shopping-button_0904.svg" alt=""
+                            class="img-responsive center-block"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<img class="cartImage" src="" alt="" style="display: none;">
+<input type="hidden" name="" class="matAvailable" value="1">
+
+
+<!-- Modal For Max Frame Size -->
+<div class="modal fade" id="myModal_maxsize12" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body" style="padding: 1px !important;">
+                <img src="https://www.arttoframe.com/custom_framing/preview/images/cf_max_size_validation.png"
+                    height="60" width="60" style="display: block;
+    margin-left: auto;
+    margin-right: auto;">
+                <h3
+                    style="text-align: center; color:#0095DA;font-size: 24px;margin-top: 20px;margin-bottom:10px;font-family: 'Product Sans',Arial,sans!important">
+                    This frame is not available in this size</h3>
+                <!-- <h4
+                    style="text-align: center; color:#0095DA;font-size: 18px;margin-top: 10px;margin-bottom: 10px;font-family: 'Product Sans',Arial,sans!important">
+                    Please choose a new frame from Frame tab bellow.</h4> -->
+                <h5
+                    style="text-align: center; color: red;font-size: 14px;margin-top: 10px;margin-bottom: 10px;font-family: 'Product Sans',Arial,sans!important">
+                    {{maxFrameSize}} </h5>
+
+				<span *ngIf="isSelectedFrameNotFound">
+				<h5
+				style="text-align: center; font-size: 14px;margin-top: 10px;margin-left: 10px;margin-bottom: 10px;font-family: 'Product Sans',Arial,sans!important">
+				Selected frame max size: <span style="font-weight: bold;">{{frameMaxWidthOld}}x{{frameMaxHeightOld}}</span></h5>
+				<!-- <h5
+				style="text-align: center; font-size: 14px;margin-top: 10px;margin-left: 10px;margin-bottom: 10px;font-family: 'Product Sans',Arial,sans!important">
+				The complete size should be less that or equal to {{frameMaxWidth}}"x{{frameMaxHeight}}" </h5> -->
+				<h5
+				style="text-align: center; font-size: 14px;margin-top: 10px;margin-left: 10px;margin-bottom: 10px;font-family: 'Product Sans',Arial,sans!important;">
+				we have updated to an available frame <span style="font-weight: bold;">{{showingChangeFrameMessage}}</span> because the previous selected frame was not available based on the size requested. </h5>
+			</span>
+				<span *ngIf="isSelectedMatNotFound">
+                <!-- <h4
+                    style="text-align: center; color:#0095DA;font-size: 18px;margin-top: 10px;margin-bottom: 10px;font-family: 'Product Sans',Arial,sans!important">
+                    Please choose a new mat from Frame tab bellow.</h4> -->
+
+				<h5
+				style="text-align: center; font-size: 14px;margin-top: 10px;margin-left: 10px;margin-bottom: 10px;font-family: 'Product Sans',Arial,sans!important">
+				Selected mat max size: <span style="font-weight: bold;">32x40</span></h5>
+				<!-- <h5
+				style="text-align: center; font-size: 14px;margin-top: 10px;margin-left: 10px;margin-bottom: 10px;font-family: 'Product Sans',Arial,sans!important">
+				The complete size should be less that or equal to {{frameMaxWidth}}"x{{frameMaxHeight}}" </h5> -->
+				<h5
+				style="text-align: center; font-size: 14px;margin-top: 10px;margin-left: 10px;margin-bottom: 10px;font-family: 'Product Sans',Arial,sans!important;">
+				we have updated to an available mat <span style="font-weight: bold;">{{showingChangeMatMessage}}</span> because the previous selected mat was not available based on the size requested. </h5>
+				</span>
+				
+            </div>
+            <div class="modal-footer" style="padding: 15px;">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

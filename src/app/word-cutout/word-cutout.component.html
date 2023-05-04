@@ -1,0 +1,1725 @@
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<div class="container">
+	<div class="col-xs-12 nopadding">
+
+		<!-- <div class="col-xs-12 nopadding white-bg" (click)="showInfoPopup('price');">
+			<div class="col-xs-1 nopadding">
+				<p class="info-img">
+					<img src="https://cdn.arttoframe.com/images/info_icon.svg" class="img-responsive center-block">
+				</p>
+			</div>
+			<div class="col-xs-7 nopadding">
+				<p class="product-name">Word Cutout </p>
+			</div>
+			<div class="col-xs-4 nopadding">
+				<p class="price-txt">$40.90</p>
+			</div>
+		</div> -->
+		<!-- <div class="mainContainerLoader" style="display: block;position: absolute;" >
+			<div>
+				<img src="https://cdn1.arttoframe.com/images/loader-letterart.gif" width="auto" height="150px" alt="Random Images" style="margin-left: 135px;margin-top: 165px">	
+			</div>
+		</div> -->
+
+		<div class="col-xs-12 white-bg">
+            <div class="col-xs-2 nopadding " (click)='navigateToSearchPage()'>
+                <p class="BackArrowCls"><img src="{{Helper.cdn}}/images/BackArrow.png">&nbsp;Back</p>
+            </div>
+            <p class="info-img">
+                <img src="{{Helper.cdn1}}/images/info_outline_white.png?v=1"
+                    class="img-responsive center-block">
+            </p>
+            <div class="col-xs-7 nopadding" (click)="showInfoPopup('price');">
+
+                <p class="product-name">Word Cutout</p>
+            </div>
+            <div class="col-xs-3 nopadding" (click)="showInfoPopup('price');">
+                <p class="price-txt" style="text-align: center;">${{totalPrice}}</p>
+            </div>
+        </div>
+		
+
+		<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 nopadding paypal_clss" style="text-align:center;">
+            <div style="margin: 10px;" id="paylater_message_price_home" attr.data-pp-message
+                attr.data-pp-amount="{{totalPrice}}">
+            </div>
+        </div>
+        <!-- <div class="col-xs-12  nopadding">
+            <p class="MatNames" *ngIf="isMatOnlyProduct">TOP MAT REF <span style="font-weight: bold;"> : {{TopMatTitle}}</span></p>
+            <p class="MatNames" *ngIf="isMatOnlyProduct && (selectedMatType === 'bottommats' || selectedMatType === 'tripplemats')">SECOND MAT <span style="font-weight: bold;"> : {{BottomMatTitle}}</span></p>
+            <p class="MatNames" *ngIf="isMatOnlyProduct && !singlePopupMatImg && selectedMatType === 'tripplemats'">THIRD MAT <span style="font-weight: bold;"> : {{TrippleMatTitle}}</span></p>
+            <p class="FrameNames" *ngIf="!isMatOnlyProduct">{{activeFrameName}} <span *ngIf="isDeploma"> diploma frames - with {{TopMatTitle}} and {{BottomMatTitle}} Mat</span> </p>
+            <p class="ratingInfoCls" *ngIf='totalReviews != null && !isMatOnlyProduct'>
+                <img src="https://cdn4.arttoframe.com/images/Review_{{totalReviews}}s.svg" (click)='showReviewFun()'
+                    *ngIf='totalReviews != null' style="height: 25px;">
+                &nbsp;({{basedOnTotalReviews}})&nbsp;
+                <img src="https://cdn.arttoframe.com/images/ratingInfo.png" (click)='showReviewFun()'
+                    *ngIf='totalReviews != null'>
+            </p>
+        </div> -->
+		
+		<div class="col-xs-12 main-product-preview nopadding">
+			<div class="mainConatiner" style="overflow: hidden;">
+				<div class="" id="previewPage">
+					<div id="middlePanel">
+						<div id="previewChild">
+							<div id="preview_container">
+								<div class="" id="framecode" style="display:none"></div>
+								<div class="openingImg" style="display:none">
+									<a href="javascript:void(0);" class="settings-upload" id="settings-upload_0"><img
+											src="" id="opening_0"></a>
+								</div>
+								<div class="swatch-images" style="display:none">
+									<img data-filename="https://www.arttoframe.com/products/frames/SwatchSmall/FRBW26079/300.jpg?&v=25"
+										id="frame-FRBW26079" data-value="1.25"
+										src="https://www.arttoframe.com/products/frames/SwatchSmall/FRBW26079/100.jpg?is_https_site=1">
+									<img data-filename="https://www.arttoframe.com/products/frames/SwatchSmall/CF-105-048C/300.jpg?&amp;v=25"
+										id="frame-CF-105-048C" data-value="1.25"
+										src="https://www.arttoframe.com/products/frames/SwatchSmall/CF-105-048C/100.jpg?is_https_site=1">
+									<img data-filename="https://www.arttoframe.com/products/frames/SwatchSmall/FRBW26074/300.jpg?&amp;v=25"
+										id="frame-FRBW26074" data-value="1.25"
+										src="https://www.arttoframe.com/products/frames/SwatchSmall/FRBW26074/100.jpg?is_https_site=1">
+									<img data-filename="https://www.arttoframe.com/products/frames/SwatchSmall/RFB-150-TOB/300.jpg?&amp;v=25"
+										id="frame-RFB-150-TOB" data-value="1.5"
+										src="https://www.arttoframe.com/products/frames/SwatchSmall/RFB-150-TOB/100.jpg?is_https_site=1">
+									<img data-filename="https://www.arttoframe.com/products/frames/SwatchSmall/0066-59504-YBLK/300.jpg?&amp;v=25"
+										id="frame-0066-59504-YBLK" data-value="1.25"
+										src="https://www.arttoframe.com/products/frames/SwatchSmall/0066-59504-YBLK/100.jpg?is_https_site=1">
+									<img data-filename="https://www.arttoframe.com/products/frames/SwatchSmall/FRBW26061/300.jpg?&amp;v=25"
+										id="frame-FRBW26061" data-value="1.25"
+										src="https://www.arttoframe.com/products/frames/SwatchSmall/FRBW26061/100.jpg?is_https_site=1">
+									<img data-filename="https://www.arttoframe.com/products/frames/SwatchSmall/FRBW74074/300.jpg?&amp;v=25"
+										id="frame-FRBW74074" data-value="2"
+										src="https://www.arttoframe.com/products/frames/SwatchSmall/FRBW74074/100.jpg?is_https_site=1">
+								</div>
+
+								<canvas #tempCanvas id="tempCanvas" style="display:none;"> </canvas>
+								<canvas #tempCanvasWordcoutout id="tempCanvasWordcoutout" style="display:none;">
+								</canvas>
+								<canvas #rotateCanvas id="rotateCanvas" style="display:none;"></canvas>
+								<input type="file" id="qqfile2" (change)="upload($event)" accept="image/*"
+									style="display:none;">
+								<canvas #swatchCanvas id="swatchCanvas" style="display:none;"></canvas>
+
+								<img alt="" id="swatchResizedImg" style="display:none;" />
+								<input type="hidden" name="myrotate" id="myrotate" value="" />
+								<img hidden name="mainImageUrl" id="mainImageUrl" src="" />
+
+								<select id="matWidth" style="display: none;">
+									<option>2</option>
+									<option>0</option>
+								</select>
+
+								<select id="finished_size_recommend" class="hidden"
+									name="finished_size_recommend"></select>
+
+								<select id="recomended_frames" class="hidden" name="recomended_frames">
+
+								</select>
+								<div id="previewSlider" class="">
+
+									<ngx-carousel [inputs]="carouselBanner" (carouselLoad)="carouselBannerLoad($event)">
+
+										<ngx-item NgxCarouselItem class="bannerStyle">
+											<div id="preview" class="equal-heights Regular_frames_image"
+												style="display: none;">
+												<!-- <img id="RF_image" class="sliderImage"
+									                                                    style="width: 85%;margin-top:20%;"                                                     
+									                                                    src="https://cdn3.arttoframe.com/products/image-corner-wom-tight/framed-art/wom/{{frameCode}}/500/corner-image.jpg?v=90">-->
+												<img id="RF_image" class="sliderImage"
+													style="width: 85%;margin-top:20%;" (click)="uploadImage()"
+													src="{{Helper.cdn2}}/products/image-corner-wom-tight/framed-art/wom/{{frameCode}}/small/corner-image.jpg?v=90">
+											</div>
+											<div id="preview" class="main-prevewcls">
+												<div style="position: absolute;z-index: 1;right: -14px;top: -6px; display:none;"
+													id="info_log">
+													<img src="{{Helper.cdn4}}/images/info_logo.png"
+														style="max-height: 378px;">
+												</div>
+
+												<!-- <div id="openingSelectorContainer" (click)="selectedOpeningCollage();" style="background: transparent;z-index: 20;position: absolute;
+												                                                    top: 0px;bottom: 0;margin: auto;left: 0;right: 0;">
+																								</div> -->
+												<div id="openingSelectorContainer" (click)="selectedOpeningCollage();"
+													style="background: transparent;z-index: 20;position: relative;">
+												</div>
+												<canvas #innerlayerCanvas id="innerlayer-canvas" class="" width="160"
+													height="200"
+													style="position: absolute;top: 75px;left:0px;right:0px;margin:0 auto;z-index: 11;display: none;"></canvas>
+
+												<canvas #framecanvas id="framecanvas" width="323" height="428"
+													style="position: absolute;"></canvas>
+												<!-- <canvas #imagelayercanvas id="imagelayer-canvas" class="" (click)="uploadImage()" width="100" height="100" style=" position:absolute; top:86px; left:0px;right:0px;margin:0 auto;background: grey;z-index: 12;"></canvas> -->
+												<canvas #imagelayercanvas id="imagelayer-canvas" class="" width="100"
+													height="100"
+													style=" position:absolute; top:86px; left:0px;right:0px;margin:0 auto;background: grey;z-index: 12;"></canvas>
+
+												<canvas #popupmatcanvas id="popupmatcanvas"
+													style="position: absolute;top: 75px;left:0px;right:0px;margin:0 auto; display: none;"
+													class="" width="239" height="279">
+												</canvas>
+
+												<canvas #groovecanvas id="groovecanvas"
+													style="position: absolute;top: 75px;left:0px;right:0px;margin:0 auto;"
+													class="" width="239" height="279">
+												</canvas>
+
+												<div class="overlay" data-cutid="0"> <span
+														style="display:none;font-family: Montserrat Regular;color:#fff;font-size:10px;position:absolute">EDIT
+														<br>
+														IMAGE</span>
+													<div class="innerLayer"></div>
+												</div>
+											</div>
+										</ngx-item>
+
+										<ngx-item NgxCarouselItem class="bannerStyle">
+											<div id="preview" class="equal-heights">
+												<img id="lifestyle_head_on" class="sliderImage"
+													style="margin: 0px auto; max-height: 398px;max-width: 100%;"
+													src="{{Helper.cdn2}}/products/frame/lifestyle_head_on/FRBW26079/500/61.jpg?v=23">
+											</div>
+										</ngx-item>
+
+										<ngx-item NgxCarouselItem class="bannerStyle">
+											<div id="preview" class="equal-heights">
+												<img id="lifestyle_with_hand" class="sliderImage"
+													style="margin: 0px auto; max-height: 398px;max-width: 100%;"
+													src="{{Helper.cdn2}}/products/frame/lifestyle_with_hand/FRBW26079/500/61.jpg?v=23">
+											</div>
+										</ngx-item>
+
+										<ngx-item NgxCarouselItem class="bannerStyle">
+											<div id="preview" class="equal-heights">
+												<img id="lifestyle_inside_corner" class="sliderImage"
+													style="margin: 0px auto; max-height: 398px;max-width: 100%;"
+													src="{{Helper.cdn2}}/products/frame/lifestyle_inside_corner/FRBW26079/500/61.jpg?v=23">
+											</div>
+										</ngx-item>
+
+										<ngx-item NgxCarouselItem class="bannerStyle">
+											<div id="preview" class="equal-heights">
+												<img id="lifestyle_outside_corner" class="sliderImage"
+													style="margin: 0px auto; max-height: 398px;max-width: 100%;"
+													src="{{Helper.cdn2}}/products/frame/lifestyle_outside_corner/FRBW26079/500/61.jpg?v=91">
+											</div>
+										</ngx-item>
+
+										<ngx-item NgxCarouselItem class="bannerStyle">
+											<div id="preview" class="equal-heights">
+												<img id="lifestyleImage" class="sliderImage"
+													style="margin: 0px auto; max-height: 398px;max-width: 100%;"
+													src="{{Helper.cdn2}}/products/frame/lifestyle_lifestyle_original/FRBW26079/500/61.jpg?v=23">
+											</div>
+										</ngx-item>
+
+										<ngx-item NgxCarouselItem class="bannerStyle">
+											<div id="preview" class="equal-heights">
+												<img id="customSliderImage" class="sliderImage"
+													style="margin: 0px auto; max-height: 398px;max-width: 100%;"
+													src="{{Helper.cdn2}}/products/collage/custom-dm-12.00x14.00/89/61/FRBW26079/20.jpg?v=23">
+											</div>
+										</ngx-item>
+
+										<ngx-item NgxCarouselItem class="bannerStyle">
+											<div id="preview" class="equal-heights">
+												<img id="corner-wom" class="sliderImage"
+													style="margin: 0px auto; max-height: 398px;max-width: 100%;"
+													src="{{Helper.cdn2}}/products/image-corner-wom-tight/framed-art/wom/FRBW26079/500/corner-image.jpg?v=23">
+											</div>
+										</ngx-item>
+
+										<ngx-item NgxCarouselItem class="bannerStyle">
+											<div id="preview" class="equal-heights">
+												<img id="cornerAngImage" class="sliderImage"
+													style="margin: 0px auto; max-height: 398px;max-width: 100%;"
+													src="{{Helper.cdn2}}/products/frame/corner_angle_image/FRBW72079/500.jpg?v=23">
+											</div>
+										</ngx-item>
+
+										<ngx-item NgxCarouselItem class="bannerStyle">
+											<div id="preview" class="equal-heights">
+												<img id="cornerPro" class="sliderImage"
+													style="margin: 0px auto; max-height: 398px;max-width: 100%;"
+													src="{{Helper.cdn2}}/products/frame/corner_profile/FRBW72079/500.jpg?v=23">
+											</div>
+										</ngx-item>
+
+
+
+										<ngx-item NgxCarouselItem class="bannerStyle">
+											<div id="preview" class="equal-heights">
+												<img id="glazeSliderImage" class="sliderImage"
+													style="margin: 0px auto; max-height: 398px;max-width: 150%;"
+													src="{{Helper.cdn2}}/products/glaze/new/small/14.png">
+											</div>
+										</ngx-item>
+
+										<!-- <ngx-item NgxCarouselItem class="bannerStyle">
+									                                            <div id="preview" class="equal-heights">
+									                                                <img id="HardwareSliderImage" class="sliderImage" style="margin: 0px auto; max-height: 398px;max-width: 150%;"
+									                                                    src="https://cdn2.arttoframe.com/products/hardware/sawtooth_small.jpg">
+									                                            </div>
+									                                        </ngx-item> -->
+
+										<ngx-item NgxCarouselItem class="bannerStyle">
+											<div id="preview" class="equal-heights">
+												<img id="cornerProSliderImage" class="sliderImage"
+													style="margin: 0px auto; max-height: 378px;max-width: 100%;"
+													src="{{Helper.cdn1}}/images/medium_made_in_brooklyn_usa.jpg">
+											</div>
+										</ngx-item>
+
+
+
+										<button NgxCarouselPrev class='leftRs'>&lt;</button>
+										<button NgxCarouselNext class='rightRs'>&gt;</button>
+									</ngx-carousel>
+
+									<!-- <ul class="LA_sliderContainer">
+										<li class="sliderLi" >
+											<div id="preview" class="main-prevewcls"  >
+												<div style="position: absolute;z-index: 1;right: -14px;top: -6px; display:none;" id="info_log">
+													<img src="https://cdn4.arttoframe.com/images/info_logo.png" style="max-height: 378px;">
+												</div>
+
+												 
+												<div id="openingSelectorContainer" (click)="selectedOpeningCollage();" style="background: transparent;z-index: 20;position: absolute;
+                                                    top: 0px;bottom: 0;margin: auto;left: 0;right: 0;">
+                                                </div>
+												<canvas #innerlayerCanvas id="innerlayer-canvas" class="" width="160" height="200" style="position: absolute;top: 75px;left:0px;right:0px;margin:0 auto;z-index: 11;display: none;"></canvas>
+												
+												<canvas #framecanvas id="framecanvas" width="323" height="428" style="position: absolute;"></canvas>
+												<canvas #imagelayercanvas id="imagelayer-canvas"  class=""  width="100" height="100" style=" position:absolute; top:86px; left:0px;right:0px;margin:0 auto;background: grey;z-index: 12;"></canvas>
+												
+												<canvas #popupmatcanvas id="popupmatcanvas"  style="position: absolute;top: 75px;left:0px;right:0px;margin:0 auto; display: none;" class="" width="239" height="279">
+												</canvas>
+
+												<canvas #groovecanvas id="groovecanvas" style="position: absolute;top: 75px;left:0px;right:0px;margin:0 auto;" class="" width="239" height="279">
+												</canvas>
+
+												<div class="overlay" data-cutid="0">	<span style="display:none;font-family: Montserrat Regular;color:#fff;font-size:10px;position:absolute">EDIT <br> IMAGE</span>
+													<div class="innerLayer"></div>
+												</div>
+											</div>
+										</li>
+										<li class="sliderLi" >
+											<div id="preview" class="equal-heights" >
+												<img id="cornerPro" class="sliderImage" style="margin: 0px auto; max-height: 378px;" src="https://cdn2.arttoframe.com/products/frame/corner_profile/0066-59504-YBLK/300.jpg?v=56">
+											</div>
+										</li>
+										<li class="sliderLi" >
+											<div id="preview" class="equal-heights" >
+												<img id="cornerAngImage" class="sliderImage" style="margin: 0px auto; max-height: 378px;" src="https://cdn1.arttoframe.com/products/frame/corner_angle_image/FRBW26079/300.jpg?v=82">
+											</div>
+										</li>
+										<li class="sliderLi" >
+											<div id="preview" class="equal-heights">
+												<img id="cornerProSliderImage" class="sliderImage" style="margin: 0px auto; max-height: 378px;" src="https://cdn1.arttoframe.com/images/medium_made_in_brooklyn_usa.jpg">
+											</div>
+										</li>
+									</ul> -->
+								</div>
+
+								<!-- ------------------- -->
+
+
+								<!-- <div id="svgHidden" class="hidden">
+									<canvas #c id="c">
+										<img id="imgMat_61"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A99ooopiCiiigAooopAFFFFAH/9k=">
+										<img id="imgMat_89"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A8yICkcED+I5Az+lBAJ5Yse2Qf60YUdiD7f5/pTsOSMNx6jP9aoBAzAdDzz/ng0UbR6n8BRQAmcYxn8zTTkYOc/NjmiigCVyUbAPFFFFAH//Z">
+										<img id="imgMat_863"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8AoHnJPHHPPak3ZOOBxnGOf88GnnHBwc9xnFBIIKglvTj/AD7VufoIqvsGCCPoKKbtLEkZYdAQB/WikIXqw9+f50indtJ67iKKKAGu5BGOMjNFFFMD/9k=">
+										<img id="imgMat_825"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A9p4GMd6Mc0nY9fqKBz2rjOgXPvRRz2NFAB2z7UmaKKAFNFFFAH//2Q==">
+										<img id="imgMat_736"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A4PjcWJIPvxn8RSkAkEZJ+ufyNA3BsAkD0JJzQ2FBzkGpOsCq55zn8KKXjA+Y9P71FADAcMvTkZqfyV3feaiigCFTxRRRQB//2Q==">
+										<img id="imgMat_716"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A64naw5HPahicYC8DnFO+Vmz6jHT+tI45Axjt7H3rsPKI3dsjGCCM5HNFTBOOMCigWg1TkKfXtR6fQ0UUDHHPrRRRQB//2Q==">
+										<img id="imgMat_817"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8AcjHkdQcHHcf5xTTuySBwPzpS2eSx9OnWg+obavavaPJBhznJ5opRnucE84xRSAbk7GpRyR9KKKYDh9BRRRSA/9k=">
+										<img id="imgMat_805"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A2yPmHBx/tGjHXvjqRTtoz6gdcdqRQSu1cg4r0TpFyB3NFJsYehopAOIyc0h4IA4FFFAAcrxkn60UUUAf/9k=">
+										<img id="imgMat_868"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8AxSQeoyTTM/hjtTgeOOB6+tIcA5Hfg1mZi8+poo349aKAIgxIzxmpRycGiigAxjPJooooA//Z">
+										<img id="imgMat_843"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A4bBycYP17UmccHvSsV24IOT0wKaWDZABIJ5rQ5hSpz2opvHqfxooAM7mAPSpOpZD0HfvRRQBE3ynAx+NFFFAH//Z">
+										<img id="imgMat_852"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A6DPJUhQcZPBBoHbBOcY6c0AAHBBI7ZHT8P8A61N+6vA/HFSZsdgHruOOOlFICT16/SigBVwB0z9TTTnccEjB7UUUANCgjPQnk4ooooA//9k=">
+										<img id="imgMat_748"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8Ai5PT5RTjnAyfx4FLnnkkD1NMJ2ngjP06/pSNBeexIH+8aKUHPp+dFAA3yr0B+tMjctnsfUdaKKAJM0UUUAf/2Q==">
+										<img id="imgMat_1461"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A9/ooooAKKKKACiiigAooooA//9k=">
+										<img id="imgMat_128"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A94DBu4NKRk9qaQR04FAOepzWJQ78qKT8TRQAgUFqSQlMY70UUAPGMDgUUUUDP//Z">
+										<img id="imgMat_81"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A9wLDH3wPfj/Cgtj+Ifp/hQS2O+fqaXvxkfia5TQZkf3h+Y/wop/zep/M/wCFFACiNScHOPrTSBnp0oopAJgelFFFMD//2Q==">
+										<img id="imgMat_815"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A40c9MilHJAP5HvRgk+/tQRjAHAPBFWeiG7HHI/Gigg8fe/OigBV5Uk9qTouRx9KKKAE/E0UUUAf/2Q==">
+										<img id="imgMat_1402"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A96ooorMoKKKKACiiigAooooA/9k=">
+										<img id="imgMat_860"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A9JO0cAnPrS4IIGM56c9KTjb9OBSAK3ODmtjAeDjuKKYFHqaKAHAZGaG4BI9M4oooAaCcUUUUAf/Z">
+										<img id="imgMat_849"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8AyBg8HOfzFATjgcUNjnDD8elAKngt+XFegdIhbB7/AJ0U8FT1cUUDG7jg01mKgYoooEWIh8n40UUUAf/Z">
+										<img id="imgMat_836"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A58glR1B/Kmg7M8YPWgZUcHGeOuacQB3HuDXqHCMEgx1opxjGerUUAKEAYe9DKFHFFFADCvT6elFFFAH/2Q==">
+										<img id="imgMat_586"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A4A5UnCk49s0oJLYKnJ7YGDTlII42k9ckUA8two47CugzGgjH3R+dFBzxhiOOgFFAxzcIzdT70ffBJ4x6UUUxEW9snk0UUUhn/9k=">
+										<img id="imgMat_837"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A4bPBGCcUdfQikPHTke54pMYOSPfBrtOcM44OKKcAGGTRSAVQCADTRw+Ooz3oopgKflJHX60UUUgP/9k=">
+										<img id="imgMat_791"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A9sHTgAfSjOByOfYUEDuF/KgDnIP0xXCah9KKPwooAkCDJ/wpmOeOPpRRQAn40UUUAf/Z">
+										<img id="imgMat_858"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A9a6DpxRn6UuKTvXinUFFGfrRQAuKTPOKKKAFzRRRQB//2Q==">
+										<img id="imgMat_1102"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A9dooorM7QooooAKKKKACiiigD//Z">
+										<img id="imgMat_1038"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A4I8npk49KDjHqfxpCOOMEe9BUg5ziuc9ICMHHFFOOc8UUABJAJo6gUUUANLEnJooooA//9k=">
+										<img id="imgMat_7501"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A3QFwD0/2qCAVON2D7n9aVM84II6gNShTuPKn3qxDFDY6D8aKeqrj76jB96KQDlH7zHagZK8nt6Y/lRRTEMLNnqaKKKBn/9k=">
+										<img id="imgMat_818"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8Av988EfkfzpoyGOSeRyM+vtThuVc4UjP3e4pwLle5AH97bWhxiAcffP5UUzj2PvtooEKrcsMDHpilyCwBVT74oooGN3H6UUUUAf/Z">
+										<img id="imgMat_1459"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A58cjA7dqbkgZxxS9M54PSgZzy3Iryz7QUHIzgUUvC8Fc0UANI+XOTSLyOaKKBAetFFFAH//Z">
+										<img id="imgMat_865"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A58sSBjv0PrRtyPuHd6jvS9GOMHIxjHOKccdD0+lUcY3PqpP4iijC+g/SigBNx9aazEHoOevFFFAEu0DpmiiigD//2Q==">
+										<img id="imgMat_1403"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A9+oooqQCiiigAooooAKKKKAP/9k=">
+										<img id="imgMat_802"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A9HLDd82AR39KPvDHzDPpSIoXPG0n1PWlycjnj2PFeUdg4ZHAPH1opmCfT+VFMBcnbnP4U4oPvc5+tFFICJmO480UUUAf/9k=">
+										<img id="imgMat_844"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A9PVMls5J6ENzzShRtID8j+EDGKZsDneVCjjmpCwBAAYn1HevPOsUc9GUD0IopA4AAKfnRSEDAbCfakUY47YoooGSIqsuSoz+NFFFMR//2Q==">
+										<img id="imgMat_47R"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A9ZAwQRkEfrQMD+EevWkGOex9zSZOcg5B9BXwGx6Q/wCXvj9aKaCRnA70U7gG4g4wPypWPIIAB9qKKQCkkHqaKKKAP//Z">
+										<img id="imgMat_861"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8An4OF+UjOOlGAcEfl60DaOh69RQVU5UgFfWuQQxlAOOR9CP60U8rGOuR9DRQAmwYJ5pmSJAoJ5HrRRSARvvHPP1ooopiP/9k=">
+										<img id="imgMat_885"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A4osTjIwPVR1puVI+9n2xRlgOeh6bjk0Nkckbseo5/wAa9I4xCo70UvA4JA9sCigBGJXAHTNORQwII4HTFFFACoMrnJooooA//9k=">
+										<img id="imgMat_785"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8AwgwJ5y3cnNDEMuDzjqc9aCMckE47YpCOeOCewrqOQMx+w9qKPM2nG0/hRQAZxgDoaFGQRk49KKKAGk44wPxFFFFAH//Z">
+										<img id="imgMat_778"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A73Awc9D0NIMcfMc+ppANuQc5PegYYZbjvnNch2EgAx1H50UgdcevvmimAE8gZOB05pMBgAfSiikAbRgdfzooopgf/9k=">
+										<img id="imgMat_712"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8AujOe2R+lIMAksfwpche2R60McnAFfMn1YA4HWikZGz3NFAApJGfantwQB0xRRQBGSfWiiigD/9k=">
+										<img id="imgMat_776"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A4pfLZRyQVHYdaXCg8D24GRTCMkMMcetAG5cgA+2etQdAu8LxvA9itFDBcjkHjqaKBiKxIx0HtTycNjsetFFAgbhiMA/WiiigD//Z">
+										<img id="imgMat_766"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A5vofX2NKWHXDEegxSEnjAPB6U7dxksMd64D3hAeO1FKFUj736UUDFA6fSmkArk9aKKBAFFFFFAH/2Q==">
+										<img id="imgMat_767"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8AjTnLAAewpSuRkD+vFBQKOQc5575pAwBx8wOfpXEegDcseWH0YUUpXP8AFiigAYdOT83Wo2JMqiiigByscUUUUgP/2Q==">
+										<img id="imgMat_782"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A77a2N2Mn1pMjuQT1OaOOWwD9O1BcYyCMfTH864DsA89hRThg9XB/4DRQAijPrx0pv8YXt69T+tFFADwBgcUUUUAf/9k=">
+										<img id="imgMat_783"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A9j4+8SSD+lKB1xwfpSFQwHPfPX/CkBIJxkmuM6heM/dz+NFBUE9M0UgEckZxSoNyZJyaKKYCgZFFFFID/9k=">
+										<img id="imgMat_760"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A5wqNwAGPU9qUkhSCSR70HrkgH6ClGSThVb+dcp6gzB9RRQQwJ4/SigB/TaaWRFUnA/OiigCHJz2/IUUUUwP/2Q==">
+										<img id="imgMat_693"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8AQk5449xQy54I6+9BJI64x+tJtyOteEfTADgYzRTtvoKKAAscgdqU8BSOM0UUAOooooA//9k=">
+										<img id="imgMat_594"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A5EZPHUn1FKeeMN7d/wBaaSO5AA7ClB7gVmeqG0/3gKKCyjrn86KAEc/Nj1605VG4cnk+tFFADnQBsdfqKKKKAP/Z">
+										<img id="imgMat_762"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A5ztycg9uadjIOM/p/hSYx/sg+9ITgZPI9hXKfeDwM+v5UU3d6Zx9KKAHY4zSe3aiigBPwFFFFAH/2Q==">
+										<img id="imgMat_846"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A7U+9N6ZB5/pTjjIyPxoPP0qD0RPl75zRRg+lFADSelOzxnrRRTAfRRRSA//Z">
+										<img id="imgMat_784"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A2+n09aCCDg0cDkflR3A7dR7V5J6QA4zzj60Uo6dSKKAEB4b1HAoYBXAHQ9aKKAAfMMnmiiigD//Z">
+										<img id="imgMat_771"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8AoEqRkpjHPWnNnG4L1GevP/1qbt567vQHtQV6Djrwa8w9kdtBAOMe1FLtyOev0ooAbk5I9O/emuzbhyaKKADpxjpRRRQB/9k=">
+										<img id="imgMat_65"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A9959qTnnkY7UcccH2oGMnAOfWpAOe5FFIMY6EUUALk5FICSTk0UUAKCcdaKKKAP/2Q==">
+										<img id="imgMat_41"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A5Xc6c5bB9zSnLLjgY556UbsN3yRyBj/61BzjjPHQnNAxAueyiigsQep/KigAU72O4Ckb7oJAPPeiigBrcMQOBRRRQB//2Q==">
+										<img id="imgMat_750"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8AwwGzycn1FJjtkleh5/nTjnk45pCG3HOTnuOlWA3nt0+tFL+JH4UUABPHQUDGDgAfSiigBu8jjAP1FFFFAH//2Q==">
+										<img id="imgMat_88"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A73aScBznGACcfyoyqHaefYc/1/zmgEFgchSOcnPNDOBxtA7dM/40AOLqMAsw+oopoHH3W/BaKAA4LEYHB44pynNuZO/p2oooARNrruKLk+gooooA/9k=">
+										<img id="imgMat_756"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A9TBJX17delHBGMEe5oK8jIow2MEA49aAFHTt+dFAGecA/hRQAuOCBwPam9MEdW60UUAL1JooooA//9k=">
+										<img id="imgMat_824"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A9644oyfWkx6k/hRyBgZ/E1mUIfrRS5HrRQAoGQaMUUUCGkkHiiiigZ//2Q==">
+										<img id="imgMat_71"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A93460cnHailGOlYFCYHc80UuT2FFACdBSdSM0UUAOzRRRQB//9k=">
+										<img id="imgMat_754"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A98o/Cj8KKgA/CilooAKKKKAEooooGf/Z">
+										<img id="imgMat_119"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A5F1wxUrjp9KULsIVFAwOQv8APFJk7Ru6A5Ax1/z/AFpxkPC7VOcHPtj/AOuak0GkAnlQT60UFl3HBCjPA3UUAKVHlo2BnJGcY9KVh0xxRRSAa6De31ooopgf/9k=">
+										<img id="imgMat_596"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8Aqk8gFODkrtGexz+HFNO0H75LEscfe29Bn/PrTQykBQ7AAfdJ6c9qe6o6jD5B6MPXGcfn/Kvnj1Q81FJ3rFlvmG846+nPSio2llB/dBAvPX6/4YopAL95vTKA8euMfyoUksRuPHfNFFPoAzeVPy4APYCiiigD/9k=">
+										<img id="imgMat_726"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A7vZtbPHuaGIC88nPGKUkAcj+lIApJHAJrxTvG5J56e1FO256bfxopgDckUA7ScAfjRRSAkzknp1ooooA/9k=">
+										<img id="imgMat_592"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A51syKhcBhkHc24A5PTI645568YphmVWTagIB6liwHAx+vNG7ACB8FsnGPlbqOT+B9aAu0PlNzIMjBxtHTd/L8+9fOnrDkG8Fn5YnvGxx/wB8jFFSCZIRjY7Z5+VuB7UU7jK0DF32kDbjoPyqy8KhJpOpRuAe/wB7r+VFFICFHKAquVAPQE0UUUAf/9k=">
+										<img id="imgMat_8409"
+											src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A2c+mMH1p2QVHY0gGT2PvQFI+h6gV8wfRjgpIzgUU3Zu5DDH1ooAdjGKa3DcUUUIAK5J60UUUgP/Z">
+
+
+
+									</canvas>
+
+
+
+									<img id="imgSample"
+										src="https://cdn1.arttoframe.com/products/mats/images/200/61.jpg">
+									<img id="imgSampleBottom"
+										src="https://cdn1.arttoframe.com/products/mats/images/200/89.jpg">
+									<img id="svgimg" src="" />
+									<input type="hidden" name="wd" id="svgwd" />
+									<input type="hidden" name="ht" id="svght" />
+									<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+										id='svgId' width="576" height="720" style="outline:auto;">
+										<defs>
+											<pattern id="imgpattern" x="0" y="0" width="20" height="20"
+												patternUnits="userSpaceOnUse">
+												<image id="patternImage"
+													xlink:href="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A99ooopiCiiigAooopAFFFFAH/9k="
+													width="20" height="20"></image>
+											</pattern>
+										</defs>
+										<defs>
+											<pattern id="imgpatternbottom" x="0" y="0" width="20" height="20"
+												patternUnits="userSpaceOnUse">
+												<image id="patternImageBottom"
+													xlink:href="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA+Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBkZWZhdWx0IHF1YWxpdHkK/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8AAEQgAFAAUAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A8yICkcED+I5Az+lBAJ5Yse2Qf60YUdiD7f5/pTsOSMNx6jP9aoBAzAdDzz/ng0UbR6n8BRQAmcYxn8zTTkYOc/NjmiigCVyUbAPFFFFAH//Z"
+													width="20" height="20"></image>
+											</pattern>
+										</defs>
+										<path id="svgpathBottomBorder" stroke="#fff" stroke-width="6px"
+											style="fill:url(#imgpatternbottom) !important"></path>
+										<path id="svgpathBottom" stroke="#f000" fill="#ff0000" stroke-width="0.25px"
+											style="fill:url(#imgpatternbottom) !important"></path>
+										<path id="svgpathBorder" stroke="#fff" stroke-width="6px"
+											style="fill:url(#imgpattern) !important"></path>
+										<path id="svgpath" stroke="#f000" fill="#ff0000" stroke-width="0.25px"
+											style="fill:url(#imgpattern) !important"></path>
+									</svg>
+								</div> -->
+								<div class="sliderContainer" style="display:none">
+									<div style="position:absolute; z-index:1; right: -14px;top: -6px; display:none;"
+										id="info_log_standard">
+										<img src="" />
+									</div>
+									<ul class="myslider" hidden>
+
+										<li id="swatch_image">
+											<a class="cornerFrame">
+												<img id="" class="frameCornerImg" src="">
+											</a>
+										</li>
+										<li id="corner_image">
+											<img class="frameCornerImg" src="">
+										</li>
+										<li id="profile_image">
+											<img class="frameCornerImg" src="">
+										</li>
+										<li id="wall_image">
+											<img class="frameCornerImg" src="">
+										</li>
+									</ul>
+								</div>
+								<!-- ------------------ -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--========================================  -->
+		<!-- letter art input modal -->
+		<div id="textinputModal" class=" modal-bottom sizeTab1 modal fade-scale animated fadeIn " role="dialog"
+			data-backdrop="static" data-keyboard="false" [style.display]=textinputModalStyle.display
+			style="z-index: 100">
+			<div class="modal-dialog new-dialog" style="height:auto;">
+				<div class="modal-header noborder nopadding ">
+					<button type="submit" class="frame-hide-btn  update-hide-btn" (click)="btnHide()"
+						[style.disply]=HideButtonStyle.display><span
+							style="font-weight: normal;font-size: 18px;">&times; </span>Close</button>
+				</div>
+				<div class="modal-content custom-border" style="height:100%;">
+					<div class="modal-body" style="height:100%;">
+						<div class="col-xs-12 nopadding " *ngIf="!showtab">
+							<div class="tab-content nopadding noborder">
+								<div id="size">
+									<div class="tab-content col-xs-12 noborder nopadding size-tab-content">
+										<div id="single-opening" class="tab-pane tab-pane-cls col-xs-12 fade in active">
+											<div class="col-xs-12 nopadding">
+												<form (ngSubmit)="onGoUserText(inputtext.value)" #user_input="ngForm">
+													<div class="col-xs-3"
+														style="padding-top: 6px;font-size:larger;font-weight: bolder">
+														YOUR WORD:
+													</div>
+													<div class="col-xs-6 height-dropdown1 nopadding">
+														<input autofocus="true" type="text" class="a" id="inputtext"
+															name="user-input-text" maxlength="10"
+															ngModel="{{userInput | uppercase }}" pattern="[a-zA-Z]*"
+															required #inputtext>
+
+														<span class="help-block">Only Alphabets allowed!</span>
+													</div>
+													<!-- <div class="col-xs-1"></div> -->
+
+													<div class="col-xs-3">
+														<button type="submit" class="btn-lg apply-btn-go"
+															[disabled]="!user_input.valid">Go</button>
+														<input type="hidden" class="shipping-opening-height"
+															id="customWidth" value="3">
+														<input type="hidden" class="shipping-opening-height"
+															id="customHeight" value="3">
+													</div>
+
+												</form>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- letter art input modal end -->
+
+		<button type="submit" class="hide-btn" style="display:none;">
+			<img src="{{Helper.cdn}}/images/CLOSE-ICON.png">&nbsp;Close</button>
+		<div class="col-xs-12 nopadding">
+			<ul class="nav nav-tabs new-cf-tabs" style="display: block;">
+				<li class="size-section active">
+					<a data-toggle="tab" id="showLetterArtpopup" (click)="showLetterArtpopup()" href="#size">
+						<img src="{{Helper.cdn}}/images/{{tabImages.letterArtPopup}}"
+							style="max-width: 57%">
+					</a>
+				</li>
+				<li class="frame-section">
+					<a data-toggle="tab" href="#frame" class="mylink" (click)="showFrames('frame'); " id="framesoption">
+						<img src="{{Helper.cdn}}/images/{{tabImages.showFrames}}" style="max-width: 57%">
+					</a>
+				</li>
+				<li class="mat-section">
+					<a data-toggle="tab" href="#mat" class="mylink" (click)="showMats('mat') ; " id="matoption">
+						<img src="{{Helper.cdn}}/images/{{tabImages.showMats}}" style="max-width: 57%">
+					</a>
+				</li>
+				<li class="decor-section">
+					<a data-toggle="tab" href="#decor" class="mylink" (click)="showDecorativeMats(); " id="decoroption">
+						<img src="{{Helper.cdn}}/images/{{tabImages.showDecorativeMats}}"
+							style="max-width: 57%">
+					</a>
+				</li>
+				<li class="glass-section">
+					<a data-toggle="tab" href="#glass" class="mylink" (click)="showGlass(); " id="glassoption">
+						<img src="{{Helper.cdn}}/images/{{tabImages.showGlass}}" style="max-width: 57%">
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="col-xs-12 BottomAddtocartHolder">
+			<div class="col-xs-6 rightpaddingZero" (click)="uploadImage()">
+				<button type="button" class="UploadPhotoNew">Upload Photo <br><span>Optional</span></button>
+			</div>
+			<div class="col-xs-6 nopadding">
+
+				<div class="Btm_ATC_btn row">
+					<div class="col-xs-3 nopadding">
+						<input type="text" value="1" placeholder="1" maxlength="1" pattern="([1-9]|[1-9]|[1-9])"
+							class="QuantityInputBx">
+					</div>
+					<div class="col-xs-9 AddTCard" (click)="showHardwarePopup()">
+						ADD TO CART
+					</div>
+
+				</div>
+				<button type="button" class="Btm_ATC_btn_progress" disabled style="display: none;"> LOADING
+					({{(uploadProgress | async | number : '1.0-0')}}%)</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!--Frame Modal sectiom -->
+<div id="frameModal" class=" modal-bottom modal fade-scale animated fadeIn" role="dialog" data-backdrop="static"
+	data-keyboard="false" style="z-index: 21;overflow: hidden;" [style.display]=frameModalStyle.display>
+	<div class="modal-dialog new-dialog">
+		<div class="modal-header noborder nopadding ">
+			<button type="submit" style="" class="frame-hide-btn  update-hide-btn" (click)="btnHide()"><span
+					style="font-weight: normal;font-size: 18px;">&times; </span>Close</button>
+		</div>
+		<div class="modal-content custom-border" style="height:100%;">
+			<div class="modal-body">
+				<p style="display: none;" class="alert-frame-text">
+					No Frame available in this size <br> Please change size in size tab
+				</p>
+				<div class="col-xs-12 nopadding" style="margin-top: 4%;" id="frameSlider">
+					<ul class="bxsliderCFWco">
+						<li *ngFor="let chunk of OnloadFrames ; let id = index" id="childeMat_33"
+                            class="clsChildMat matCont op_2 " attr.data-maxSize="{{chunk.finished_size}}"
+                            attr.data-width="{{chunk.framewidth}}" attr.lip_width="{{chunk.lip_width}}"
+                            attr.data-FCode="{{chunk.code}}">
+                            <div style="padding:0px 4px;" id="frame_{{chunk.code}}" class="chmat mat in_stock"
+                                attr.data-frameCode="{{chunk.code}}" attr.data-frameid="{{chunk.frame_id}}"
+                                attr.frame_name="{{chunk.name}}" attr.data-lip_width="{{chunk.lip_width}}"
+                                attr.data-width="{{chunk.framewidth}}" attr.data-materialId="{{chunk.material_class}}"
+                                attr.data-maxSize="{{chunk.finished_size}}" (click)="changeFrame(chunk)"
+                                data-opening="2">
+                                <!-- <img class="myFrame" id="myFrame_{{chunk.code}}" src="https://cdn2.arttoframe.com/products/image-corner-wom-tight/framed-art/wom/{{chunk.code}}/small/corner-image.jpg?v=25" alt=""> -->
+                                <img loading="lazy" [ngClass]="{'frame_active': frameCode == chunk.code}" class="myFrame"
+                                    id="myFrame_{{chunk.code}}"
+                                    src="{{Helper.cdn2}}/products/image-corner-wom-tight/framed-art/wom/{{chunk.code}}/small/corner-image.jpg?v=25"
+                                    src="" alt="">
+                                <p class="fname fname_{{chunk.code}}">{{chunk.name}}</p>
+                                <!-- <p class="frameprice-tag">$8.10</p> -->
+                            </div>
+                        </li>
+						<!-- <div id="frame_loader">
+                            <img src="https://cdn1.arttoframe.com/images/loader-letterart.gif" width="auto" height="115px" alt="Random Images">
+                        </div> -->
+					</ul>
+					<div class="col-xs-12 BottomBorderFrames">
+						<div class="col-xs-4 NoOFItemsDip">ITEMS: <span *ngIf="OnloadFrames?.length > 0 ">(
+								{{OnloadFrames.length}}/283 )</span>
+						</div>
+						<div class="col-xs-8" class="sortList">
+							<div class="col-xs-4 SortByDip nopadding" style="" (click)="getframeFilterColorsList()">
+								<select id="selFrameColor" (change)="getFrameFilterColorsName();"
+									class="selFrameFilters">
+									<option value="0">Colors</option>
+									<option *ngFor=" let frameFN of frameFilter" [selected]="frameFilterID === frameFN.id" value="{{frameFN.id}}">
+										{{frameFN.color}}
+									</option>
+									<!-- <option value="17">Blue</option><option value="4">Brown</option> -->
+								</select>
+							</div>
+							<!-- <div class="col-xs-1"></div> -->
+							<div class="col-xs-4 SortByDip nopadding">
+								<select id="myframe_sortby" (change)="getFrameSortData();">
+									<option value="">SORT BY </option>
+									<option value="ASC">Low to High Price </option>
+									<option value="DESC">High to Low Price</option>
+								</select>
+							</div>
+						</div>
+						<!-- <div class="col-xs-1"></div> -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--Mat Modal sectiom -->
+<div class="tooltiptextMat col-xs-12" style="display: none;top: 220px;">
+
+	<div class="col-sm-9" style="padding-right:0px;">
+		<p id="tooltipmsgMat">* Please note, all mat openings are cut roughly 1/4" smaller than the
+			size
+			entered. This is
+			to allow the mat to hold your picture in with out falling through the opening.</p>
+	</div>
+
+</div>
+<div id="matModal" class=" modal-bottom modal fade-scale animated fadeIn" role="dialog" data-backdrop="static"
+	data-keyboard="false" style="z-index: 100;" [style.display]=matModalStyle.display>
+	<div class="modal-dialog new-dialog">
+		<!-- Modal content-->
+		<div class="modal-header noborder nopadding ">
+			<button type="submit" style="" class="frame-hide-btn  update-hide-btn" (click)="btnHide()"><span
+					style="font-weight: normal;font-size: 18px;">&times; </span>Close</button>
+		</div>
+		<div class="modal-content custom-border" style="height:100%;">
+			<span style="color: black;
+			font-size: 13px;
+			font-weight: bold;
+			background: transparent;
+			border: none;margin-left: 5px;">Items: <span *ngIf="dataMatsArray?.length > 0 ">(
+				{{dataMatsArray.length}}/62 )</span>
+			</span>
+
+			<button type="submit" class="color-filterbtn">COLOR FILTER&nbsp;
+				<img src="{{Helper.cdn}}/images/color-filter.png">
+			</button>
+			<!-- <div class="mat_alert"> -->
+			<span id="more_info_note" (click)="tooltiptextMat()">&nbsp;<img
+					src="{{Helper.cdn1}}/images/info-icon-mat-only.png" alt=""
+					style="height: 20px;margin-top: -3px;margin-left: 5px;"> More Info
+			</span>
+			
+			<div class="modal-body">
+				<div class="col-xs-12" style="padding-right: 0px;padding-left: 0px;padding-top: 12px;">
+					<ul class="bxsliderCFMat" id="matfilter">
+						<li *ngFor=" let mat of dataMatsArray" id="childeMat_33" class="clsChildMat matCont op_2 "
+							attr.data-size32x40="{{mat.size32x40}}" attr.data-size40x60="{{mat.size40x60}}"
+							attr.data-size48x96="{{mat.size48x96}}" attr.data-matCode="{{mat.code}}">
+							<div data-value="mats" (click)="changeMat(mat)" class="chmat mat in_stock"
+								id="mat_{{mat.code}}">
+								<img class="matRound" id="mymat_{{mat.code}}" src="" attr.data-src="{{Helper.cdn1}}/products/mats/images/200/{{mat.code}}.jpg"
+									alt="">
+								<div class="mat-border"></div>
+								<img src="{{Helper.cdn1}}/images/Checkbox-CF-19.png"
+									[ngClass]="{'mat_active': selected_mat == mat.code}" class="mat-checkbox-green1"
+									id="selectedMat_{{mat.code}}">
+								<!-- <p class="matName matName_{{mat.code}}" style="padding:5px 0px 0px 0px;">{{mat.crescent_name}} -->
+								<p class="matName matName_{{mat.code}}" style="padding:5px 0px 0px 0px;">{{mat.name}}
+								</p>
+								<!-- <p>$10</p> -->
+							</div>
+						</li>
+						
+						<!-- <div id="mat_loader">
+					                            <img src="https://cdn1.arttoframe.com/images/loader-letterart.gif" width="auto"
+					                                height="80px" alt="Random Images">
+					                        </div> -->
+					</ul>
+				</div>
+				<div class="col-xs-12 nopadding" style="display:none">
+					<div id="doublemat" class="" style="display: none;">
+						<ul class="nav nav-tabs MatTabsChild1">
+							<li class="bmat disabled_tab" (click)="selectMats('nomats');" data-tab="nomats"
+								style="width: 49.5%;display: none;">
+								<a href="javascript:void(0)" class="">
+									<label class="switch">
+										<input type="checkbox" id="nomats" name="nomats" data-value="nomats"> <span
+											class="sliders round"></span>
+									</label>NO MAT</a>
+							</li>
+							<li class="bmat disabled_tab active" (click)="selectMats('topmats');" data-tab="top"
+								style="width: 49.5%;display: none;">
+								<a href="javascript:void(0)" class="">
+									<label class="switch">
+										<input type="checkbox" id="topmats" name="topmats" data-value="topmats" checked>
+										<span class="sliders round"></span>
+									</label>TOP MAT</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--Decor Modal sectiom -->
+<div id="decorModal" class="modal-bottom modal fade-scale animated fadeIn" role="dialog" data-backdrop="static"
+	data-keyboard="false" style="z-index: 100;" [style.display]=decorModalStyle.display>
+	<div class="modal-dialog new-dialog" style="height:auto;">
+		<div class="modal-header noborder nopadding">
+			<button type="submit" class="frame-hide-btn update-hide-btn" (click)="btnHide()"
+				[style.disply]=HideButtonStyle.display><span style="    font-weight: normal;font-size: 18px;">&times;
+				</span>Close</button>
+		</div>
+		<!-- Modal content-->
+		<div class="modal-content custom-border" style="height:70%;">
+			<div class="modal-body" style="height:100%;">
+				<div id="size" class="tab-pane active">
+					<ul class="nav nav-tabs size-sub-tabs decor-subtabs">
+						<li class="active vgrooveSection" style="width:100%"><a data-toggle="tab" href="#engraving"
+								class="engraving-tab">ENGRAVING
+								<img src="{{Helper.cdn1}}/images/info_outline_white.png?v=1"
+									style="width:23px;height:23px;cursor: pointer;" class="decorinfo-img"
+									id="vgroove_info" (click)="showInfoPopup('vgroove');">
+							</a>
+						</li>
+					</ul>
+					<div class="tab-content col-xs-12 noborder nopadding decor-tab-content">
+						<div id="engraving" class="tab-pane fade in active">
+							<div class="col-xs-12 nopadding">
+								<div class="col-xs-12 ">
+									<ul class="bxsliderCFWco" style="padding: 10px 0px;">
+										<li id="childeMat_33" class="text-center clsChildMat matCont op_2 ">
+											<div data-value="mats" class="chmat mat in_stock">
+												<div class="toggleCommenDiv"> <span
+														id="fancyAllowTextOn">&nbsp;On</span>
+												</div>
+												<div style="padding: 0px 0px 0px;" (change)="vgrooveSwitch();">
+													<label class="fancyswitch" style="margin-top:2px;">
+														<input class="fancyCheckbox" id="vgrooveCheckbox"
+															name="vgrooveCheckbox" type="checkbox"><span
+															class="fancyslider fancyround"></span><span>&nbsp;</span>
+													</label>
+												</div>
+												<div class="toggleCommenDiv"> <span id="fancyAllowTextOff"
+														style="color: rgb(105, 105, 105);">&nbsp;Off</span>
+												</div>
+											</div>
+										</li>
+										<li *ngFor=" let vgroove of vgrooveArr" id="childeMat_33"
+											class="clsChildMat matCont op_2 ">
+
+											<div data-value="mats" class="chmat mat in_stock"
+												(click)="applyVGroove(vgroove.vGrooveId);"
+												attr.vgroovCode="{{vgroove.vGrooveCode}}"
+												id="vgroov_{{vgroove.vGrooveId}}">
+
+												<img style="width:75px;border: 5px solid #bbac98" class="" id="mymat"
+													src="{{Helper.cdn2}}/custom_framing/preview/actions/vgroovthumb/thumb_trans_vrgroov_{{vgroove.vGrooveId}}.png"
+													alt="">
+												<img _ngcontent-wvv-c1=""
+													[ngClass]="{vgroove_active: vgroove.vGrooveId === selectedVgroove}"	class="mat-checkbox-green1 vgrooveSelect_{{vgroove.vGrooveId}}"
+													src="{{Helper.cdn1}}/images/Checkbox-CF-19.png">
+											</div>
+											<!-- <p class="engraving-price">+$10.00</p> -->
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--glass Modal Section -->
+<div id="glassModal" class="modal-bottom modal fade-scale animated fadeIn" role="dialog" data-backdrop="static"
+	data-keyboard="false" style="z-index: 100;" [style.display]=glassModalStyle.display>
+	<div class="modal-dialog new-dialog" style="  height: 134px;">
+		<div class="modal-header  noborder nopadding">
+			<button type="submit" class="frame-hide-btn  update-hide-btn" (click)="btnHide()"
+				[style.disply]=HideButtonStyle.display><span style="font-weight: normal;font-size: 18px;">&times;
+				</span>Close</button>
+		</div>
+		<!-- Modal content-->
+		<div class="modal-content custom-border" style="height:100%;">
+			<div class="modal-body" style="height:100%;">
+				<div id="glass" class="tab-pane fade  active in">
+					<div class="col-xs-12 openingphotDiv glassDiv" id="glassContainer">
+						<div class="col-xs-12 glass-selec-drpdownParent">
+							<div class=" col-xs-4 nopadding">
+								<p class="GlassTypeTxt">Glass type</p>
+							</div>
+							<div class=" col-xs-8 nopadding">
+								<ul class="nav nav-tabs glassSuboptions">
+									<li class="col-xs-6 glass_only active" style="width: 50%;padding:0px;"><a
+											data-toggle="tab" data-tab="glass" href="#glass"
+											class="glasstab_newUI">GLASS</a>
+									</li>
+									<li class="col-xs-6 glass_plexi nopadding" style="width: 50%;"><a data-toggle="tab"
+											data-tab="plexiglass" href="#plexiglass"
+											class="plexiTab_newUI plexiTab_newUI_main">PLEXI GLASS</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="tab-content col-xs-12 nopadding GlassTabContent_nw">
+							<div id="glass" class="col-xs-12 nopadding tab-pane fade active in">
+								<div class="col-xs-12 dropdownArea_cf">
+									<div class=" col-xs-4 nopadding">
+										<p class="GlassTypeTxt">Quality</p>
+									</div>
+									<div class="col-xs-8 GlassDrpDwn_Select">
+										<p (click)="showGlassPoup()" id="glass_only_name" style="font-size: 18px;">
+											Regular Glass</p>
+									</div>
+								</div>
+							</div>
+							<div id="plexiglass" class="col-xs-12 nopadding tab-pane fade ">
+								<div class="col-xs-12 dropdownArea_cf">
+									<div class=" col-xs-4 nopadding">
+										<p class="GlassTypeTxt">Quality</p>
+									</div>
+									<div class="col-xs-8 GlassDrpDwn_Select">
+										<p (click)="showGlassPoup()" id="glass_plexi_name" style="font-size: 18px;">
+											Regular Plexi Glass</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Glass popup -->
+<div class="modal fade in" id="glassPopup" aria-hidden="true" [style.display]=glassPopup.display
+	style="display: none;z-index: 10000;top: 45px">
+	<div class="modal-dialog hdwdialogCF fullwidthdialog">
+		<div class="modal-content nobordercls">
+			<div class="modal-body nopadding">
+				<div class="container nopadding TabMediaWidth">
+					<div class="row nomargin" style="margin:0px;">
+						<div class="col-xs-12 nopadding">
+							<p class="detailPopupClose glassdetailpopup">
+								<img src="{{Helper.cdn1}}/images/back-btn-cf.png">&nbsp;Back
+							</p>
+							<p class="hdwTitleCF-glass1" id="glsPopupTitle">Choose Your Glass</p>
+						</div>
+						<div *ngFor="let glass of glassArr"
+							class="col-xs-12 glassType_{{glass.glass_type}} applicableGlass_{{glass.code}}"
+							style="padding:15px;">
+							<div class="col-xs-12 main-area-glass nopadding">
+								<div class="col-xs-12 glass-area traverse_{{glass.code}}"
+									(click)="glassPopupToggle(glass.code)" attr.max_size1="{{glass.max_size1}}"
+									attr.min_size2="{{glass.max_size2}}" attr.defaultGlass="{{glass.default_glass}}"
+									attr.gRating="{{glass.rating}}">
+									<p class="glass-name">{{glass.name}}</p>
+									<!-- <p class="glass-price">price:${{glass.priceperfoot}}</p> -->
+									<p class="glass-price"><span class="read-details">Read details</span> <span
+											style="float:right;" class="glassPriceDifference_{{glass.code}}"></span>
+									</p>
+									<div class="col-xs-6 nopadding">
+										<p class="quality-tag">Quality: <span
+												*ngFor="let index of [glass.rating];let j = index">
+												<span *ngIf="index == 5">
+													<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+													<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+													<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+													<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+													<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+												</span>
+												<span *ngIf="index == 4">
+													<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+													<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+													<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+													<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+												</span>
+												<span *ngIf="index == 3">
+													<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+													<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+													<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+												</span>
+												<span *ngIf="index == 2">
+													<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+													<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+												</span>
+												<span *ngIf="index == 1">
+													<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+												</span>
+											</span>
+											<!-- <span><img src="https://cdn3.arttoframe.com/images/star_black.png"></span>
+							    					<span><img src="https://cdn3.arttoframe.com/images/star_black.png"></span>
+							    					<span><img src="https://cdn3.arttoframe.com/images/star_black.png"></span> -->
+										</p>
+									</div>
+									<div class="col-xs-6 nopadding">
+										<p style="text-align:right;margin: 0px;">
+											<button type="submit" id="Tglass_{{glass.code}}"
+												class="confrim-btn selectedGlass_{{glass.code}} confirmGlass"
+												style="display:none;"
+												(click)="glassPopupConfirmBtn(glass.code);">Confirm</button>
+										</p>
+									</div>
+									<div class="col-xs-6 nopadding">
+										<p style="text-align:right;margin: 0px;">
+											<!-- <button class="see-more-btn seeMoreBtn_{{glass.code}}">See More</button> -->
+											<button
+												class="see-more-btn select-btn seeMoreBtn_{{glass.code}}">Select</button>
+										</p>
+									</div>
+								</div>
+								<div class="col-xs-12 traversing_{{glass.code}} glassShowHide" style="display:none;">
+									<img src="{{glass.image}}"
+										class="img-responsive center-block">
+									<ul *ngFor=" let dd of glass.text_description"
+										class="glass-description glasDescription_{{glass.code}}">
+										<li>{{dd}}</li>
+										<!-- <li>Standard indoor-framing protective material</li>
+												<li>Partial UV protection for prints exposed to sunlight</li>
+															<li>Scratch resistant</li>  -->
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--MAT ENGRAVING--->
+<div class="modal fade in" id="mat_engraving_popup" style="z-index: 10000;display: none;" aria-hidden="true"
+	[style.display]=infomodalStyle.vgrooveDisplay>
+	<div class="modal-dialog Product-dialogCF">
+		<div class="modal-header noborder nopadding">
+		</div>
+		<div class="modal-content">
+			<div class="modal-body nopadding">
+				<div class="container nopadding TabMediaWidth">
+					<div class="row nomargin" style="margin:0px;">
+						<div class="col-xs-12 nopadding">
+							<p class="hdwTitleCF">MAT ENGRAVING<span class="detailPopupClose"
+									(click)="btnHideInfo();"><img
+										src="{{Helper.cdn1}}/images/close-hdw-CF.png"></span>
+							</p>
+						</div>
+						<div class="col-xs-12">
+							<img src="{{Helper.cdn1}}/images/engraving_img.png"
+								class="img-responsive center-block mat_env_img">
+						</div>
+						<div class="col-xs-12 engraving_txt">
+							<p>Looking to add a touch elegance and class to your framed item? We now offer mat engraving
+								for a classic touch that can be added to any mat of your choice.
+								<br>
+								<br>The V-groove cut will add beautiful and subtle contrast to any mat by cutting one of
+								our classic decorations. Upgrade your mat with this feature for added depth and
+								character.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Hardware Popup -->
+<div class="modal fade in" [style.display]=hardwarepopupStyle.display id="hardwarepopup" style="display: none;"
+	aria-hidden="false">
+	<div class="modal-dialog hdwdialogCF fullwidthdialog" style="height:100%;">
+		<!--<div class="modal-header noborder nopadding">
+    		<button type="submit" class="frame-hide-btn" style="display:none;" (click)="btnHide()"><span style="    font-weight: normal;font-size: 18px;">&times; </span>Hide</button>
+    </div>-->
+		<div class="modal-content nobordercls" style="height:100%;box-shadow: none;">
+			<div class="modal-body nopadding">
+				<div class="container nopadding TabMediaWidth">
+					<div class="row nomargin" style="margin:0px;">
+						<div class="col-xs-12 nopadding">
+							<p> <span class="detailPopupClose detailPopupClosehd1">&times;</span>
+							</p>
+							<p class="hdwTitleCF-glass1" style="color: #001F32; margin-top: 10px !important;">Hardware Options</p>
+						</div>
+						<div class="col-xs-12 hardwarePopupContent" style="padding: 0px 25px;">
+							<div *ngFor=" let hardwareInfo of hardwareData"
+								class="col-xs-12 hardwareCFOptionParent hardwareId_{{ hardwareInfo.id }}">
+								<div class="col-xs-8 hdwtitleOptions"> <a href="javascript:void(0);"
+										id="hardware_{{ hardwareInfo.id }}"
+										class="hardwareCFOption removeHardware active"
+										(click)="selectHardware(hardwareInfo.id, true)"> {{ hardwareInfo.name }}
+										<br><span class="hardwarePrice_{{ hardwareInfo.id }}"></span> <input
+											type="radio" name="hardware_id" value="1" checked="checked"
+											id="hardware_{{ hardwareInfo.id }}" class="hidden size_90_90"
+											data-max-size1="90" data-max-size2="90">
+									</a>
+									<div class="install_it_me_options" *ngIf="hardwareInfo?.install">
+                                        <div class="tooltip" [ngStyle]="{'background-color': selectedHardwareId === hardwareInfo.id ? 'rgb(77, 195, 41)' : ''}">Install It For Me 
+                                            <!-- <span class="tooltiptext"><a href="#">Horizontal</a></span> -->
+                                            <div class="tooltiptext">
+                                                <div class="checkbox">
+                                                    <label><input class="check" (click)="selectHardware(hardwareInfo.id, false);selectInstall(hardwareInfo.id, $event);" style="margin: 3px 0px 0 -21px !important;" type="checkbox" value="1">Vertical</label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label><input class="check2" (click)="selectHardware(hardwareInfo.id, false);selectInstall(hardwareInfo.id, $event);" style="margin: 3px 0px 0 -21px !important;" type="checkbox" value="2">Horizontal</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+								</div>
+								<div class="col-xs-4 nopadding imgHrd">
+									<img src="{{ hardwareInfo.image }}" data-src="{{ hardwareInfo.image }}"
+										style="max-width:85%;border-radius:50%; margin-top: 10px;">
+								</div>
+							</div>
+							<p class="text-center col-xs-12" style="padding: 0px 0px 0px;margin:0px;"><a
+									href="javascript:void(0);" class="confirm-Opening" id="confirmhardware"
+									(click)="addToCart();">CONFIRM</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--color filter popup--->
+<div id="colorfilter" class="modal fade" role="dialog">
+	<div class="modal-dialog new-dialog" style="height: 110%;">
+		<!-- Modal content-->
+		<div class="modal-content custom-border">
+			<div class="modal-header noborder" style="padding:10px 0px;">
+				<a class="back-btn-colorfilter">
+					<img src="{{Helper.cdn}}/images/back-btn-cf.png">&nbsp;Back</a>
+			</div>
+			<div class="modal-body">
+				<div class="col-xs-12">
+					<p class="matcolor-filter">Select by mat color</p>
+					<ul class="matcolor-list" id="matF">
+						<li><a href="javascript:void(0);" class="matfilter-name-active matFilterCls"
+								(click)="selectMatFilter('0');" id="matColor_0">Select</a>
+						</li>
+						<li *ngFor=" let matFilter of matFilter"><a href="javascript:void(0);"
+								class="matfilter-name matFilterCls" (click)="selectMatFilter(matFilter.id);"
+								id="matColor_{{matFilter.id}}"> {{matFilter.color}} </a>
+						</li>
+
+					</ul>
+					<!-- <button type="submit" class="confirm-Opening-popup" id="matfilter-confirm" (click)="showMats('filter');">Confirm</button> -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="uploadImageDiv hidden" id="myUpload">
+	<input type="file" value="Select" id="browse" class="hidden" />
+	<input type="file" name="qqfiles[]" multiple id="fileSelector" accept="image/*" class="hidden" />
+	<div id="thumbnail-fine-uploader"></div>
+</div>
+<div id="progressModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="progress blue"> <span class="progress-left">
+						<span class="progress-bar"></span>
+					</span> <span class="progress-right">
+						<span class="progress-bar"></span>
+					</span>
+					<div class="progress-value">90%</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal  in" style="display: none;" id="cartpopup" tabindex="-1" role="dialog" aria-hidden="false">
+	<div class="modal-dialog FloaterCustomDialog" role="document">
+		<div class="modal-content NewCustomContent">
+			<div class="modal-body">
+				<div class="container nopadding">
+					<div class="col-xs-12 ">
+						<div class="row" style="padding-top:15px;padding-bottom:15px;margin-bottom: 9px;">
+							<div class="card-id-show">
+								<div class="cart_inner_div" style="float:none !important;">
+									<h1
+										style="font-size: 22px;font-family: 'Product Sans', Arial, sans-serif !important;padding: 0px 10px 15px 10px;">
+										Shopping Cart #
+										84116217</h1>
+								</div>
+								<div class="cart_inner_div1"><span>
+										<!-- <img src="images/msg_logo.png"> Send by mail -->
+									</span><span style="margin-left: 72px;">
+										<!-- <img src="images/printer.png"> Print -->
+									</span>
+								</div>
+							</div>
+							<div class="col-xs-4" style="padding:8px;"> <span
+									style="font-size:22px;font-family: 'Product Sans', Arial, sans-serif;">Cart</span>
+								<span class="spaniditem">1 item</span>
+							</div>
+							<div class="col-xs-2" style="padding:2px;">
+								<a href="javascript:void(0)" onclick="isValidCheckout(this)"
+									data-href="login_mobile.php?type=paypal">
+									<img src="{{Helper.cdn6}}/images/paypal_mobile1.png"
+										style="width:100%;">
+								</a>
+							</div>
+							<div class="col-xs-2" style="padding:2px;">
+								<a href="javascript:void(0)" onclick="isValidCheckout(this)"
+									data-href="login_mobile.php?type=amazon">
+									<img src="{{Helper.cdn5}}/images/amezon_mobile1.png"
+										style="width:100%;">
+								</a>
+							</div>
+							<div class="col-xs-4" style="padding:8px;">
+								<a href="javascript:void(0)" onclick="isValidCheckout(this)"
+									data-href="login_mobile.php?type=checkout"> <span class="checkout">Check Out</span>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12">
+						<div class="row" style="margin:0px;">
+							<form id="form_update" method="post" action="cartmanager.php" class="form1">
+								<div style="display:none;" class="quick_view_info" id="quick_view_0">
+									<div class="row details">
+										<div class="col-xs-6" style="text-align:left;">
+											<p>Frame ID</p>
+										</div>
+										<div class="col-xs-6" style="text-align:right;">
+											<p id="frame_name">3926</p>
+										</div>
+									</div>
+									<div class="row details">
+										<div class="col-xs-6" style="text-align:left;">
+											<p>Size</p>
+										</div>
+										<div class="col-xs-6" style="text-align:right;">
+											<p id="frame_name">12x18</p>
+										</div>
+									</div>
+									<div class="row details">
+										<div class="col-xs-6" style="text-align:left;">
+											<p>Outside size</p>
+										</div>
+										<div class="col-xs-6" style="text-align:right;">
+											<p id="frame_name">18x24</p>
+										</div>
+									</div>
+									<div class="row details">
+										<div class="col-xs-6" style="text-align:left;">
+											<p>Top Mat</p>
+										</div>
+										<div class="col-xs-6" style="text-align:right;">
+											<p id="frame_name">Super White</p>
+										</div>
+									</div>
+									<div class="row details">
+										<div class="col-xs-6" style="text-align:left;">
+											<p>Bottom Mat</p>
+										</div>
+										<div class="col-xs-6" style="text-align:right;">
+											<p id="frame_name">Black</p>
+										</div>
+									</div>
+									<div class="row details">
+										<div class="col-xs-6" style="text-align:left;">
+											<p>Glass type</p>
+										</div>
+										<div class="col-xs-6" style="text-align:right;">
+											<p id="frame_name">Styrene</p>
+										</div>
+									</div>
+									<div class="row details">
+										<div class="col-xs-6" style="text-align:left;">
+											<p>Hardware type</p>
+										</div>
+										<div class="col-xs-6" style="text-align:right;">
+											<p id="frame_name">Wire, nails and hooks</p>
+										</div>
+									</div>
+									<div class="row details">
+										<div class="col-xs-6" style="text-align:left;">
+											<p>Backing type</p>
+										</div>
+										<div class="col-xs-6" style="text-align:right;">
+											<p id="frame_name">Foam Backing 3/16 inch</p>
+										</div>
+									</div>
+									<div class="row details">
+										<div class="col-xs-6" style="text-align:left;">
+											<p>Paper type</p>
+										</div>
+										<div class="col-xs-6" style="text-align:right;">
+											<p id="frame_name">Fine Art Satin Photographic Paper</p>
+										</div>
+									</div>
+								</div>
+								<div class="cart_product odd">
+									<div class="rowssss">
+										<div class="row productdetailfont1" style="margin:0px;">
+											<a id="quick_view_link_0" style="color:#2171A9;" href="javascript:void(0);"
+												data-itemselected="0"
+												data-imageurl="https://cdn4.arttoframe.com/custom_framing/order/47e48306c266f9575a2c8c3dbe6a38d3/preview.jpg"
+												data-popup_heading=" Size - 12x18 Frame&nbsp;Satin Black"
+												data-cornerimageurl="https://cdn2.arttoframe.com/products/image-corner-wom-tight/framed-art/wom/FRBW26079/300/corner-image.jpg"
+												data-cornerclosupimageurl="https://cdn4.arttoframe.com/products/frame/corner_angle_image/FRBW26079/300.jpg"
+												data-profileimageurl="https://cdn3.arttoframe.com/products/frame/corner_profile/FRBW26079/300.jpg"
+												data-glass_image="https://www.arttoframe.com//products/glaze/glass_common.png"
+												data-topmat_color="0xF3F0EA" data-bottommat_color="0x1e1e1e"
+												data-prodcode="57" class="checkout_popup">
+												<div class="col-xs-4">
+													<p>
+														<img class="shadowforimg" id="item_0" line_id="0"
+															src="{{Helper.cdn4}}/custom_framing/order/47e48306c266f9575a2c8c3dbe6a38d3/preview.jpg"
+															style="max-height: 90px; max-width: 90px; margin-left: 6px;">Quick
+														view
+													</p>
+												</div>
+											</a>
+											<div class="col-xs-5">
+												<p class="itemname"><span> Size - 12x18 Frame&nbsp;</span><span
+														class="txt_limit">Satin Black</span>
+												</p>
+												<p class="shipping_day">Ships in 3 days.</p>
+											</div>
+											<div class="col-xs-3" style="padding: 0px;">
+												<p class="price">$66.88</p>
+												<p class="">Qty:
+													<input data-key="0" id="qty_0" class="quentity_class" name="qty[0]"
+														style="width: 35px;height: 25px; padding: 1px 7px;" type="text"
+														placeholder="1" value="1" onblur="update_single(0,1,this.value)"
+														onchange="update_single(0,1,this.value)" maxlength="3"
+														onkeypress="return isNumberKey(event)">
+												</p>
+												<p class="removebtn delete_popup" data-itemdays="Ready in 3 days."
+													data-itemname=" Size - 12x18 Frame  Opening Frame <br/>Satin Black"
+													data-itemimage="https://cdn4.arttoframe.com/custom_framing/order/47e48306c266f9575a2c8c3dbe6a38d3/preview.jpg"
+													data-singleitemprice="66.88" data-itemprice="$66.88"
+													data-itemqty="1" data-lineitem="0">Remove</p>
+											</div>
+										</div>
+										<div class="row" style="margin-top:15px"></div>
+										<div class="linegrey"></div>
+									</div>
+								</div>
+								<input name="action" type="hidden" id="action" value="update_my_cart">
+							</form>
+						</div>
+						<div class="col-xs-12">
+							<div class="col-xs-12">
+								<div class="col-xs-5">
+									<p class="textdesc">Shipping mode</p>
+								</div>
+								<div class="col-xs-7">
+									<div class="select-drp">
+										<select>
+											<option>Standard</option>
+											<option>Standard</option>
+											<option>Standard</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-12">
+								<div class="col-xs-5">
+									<p class="textdesc">Zip code</p>
+								</div>
+								<div class="col-xs-7">
+									<input type="text" class="cart-input" placeholder="">
+								</div>
+							</div>
+							<div class="col-xs-12">
+								<div class="col-xs-5">
+									<p class="textdesc">Promo code</p>
+								</div>
+								<div class="col-xs-7">
+									<input type="text" class="cart-input" placeholder="">
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 nopadding">
+							<table class="subtotal-div">
+								<tr>
+									<td>Sub Total</td>
+									<td class="align-right">44</td>
+								</tr>
+								<tr>
+									<td>Shipping</td>
+									<td class="align-right">12</td>
+								</tr>
+								<tr>
+									<td>Sales tax</td>
+									<td class="align-right">05</td>
+								</tr>
+								<tr>
+									<td>Discount</td>
+									<td class="align-right"><b>10</b>
+									</td>
+								</tr>
+								<tr>
+									<td><b>Total Order</b>
+									</td>
+									<td class="align-right">50</td>
+								</tr>
+							</table>
+						</div>
+						<button type="submit" class="btn proceedpymnt">Checkout</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- random Image Modal -->
+
+<div id="infomodal" class="modal " role="dialog" [style.display]=infomodalStyle.priceDisplay>
+	<div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="container">
+					<div class="row nomargin">
+						<div class="col-xs-12">
+							<p _ngcontent-c1="" class="detailPopupClose glassdetailpopup" id="Bck-info-price"
+								(click)="btnHideInfo();">
+								<img _ngcontent-c1=""
+									src="{{Helper.cdn1}}/images/back-btn-cf.png">&nbsp;Back
+							</p>
+							<p class="hdwTitleCF-glass1">PRODUCT DETAILS<span class="detailPopupClose"><img
+										src="{{Helper.cdn1}}/images/close-hdw-CF.png"></span>
+							</p>
+						</div>
+						<div class="col-xs-12 product-detailsTxt">
+							<li class="framecodedetail">Frame ID: <span>CF-105-048C</span>
+							</li>
+							<li class="framenamedetail">Frame Name: <span>Smooth Black</span>
+							</li>
+							<li class="framematerialdetail">Frame Material: <span>MDF</span>
+							</li>
+							<br>
+							<li class="finishedsizedetail">Finished Size: <span>10x12</span>
+							</li>
+							<li class="openingsizedetail">Opening Size: <span>8x10</span>
+							</li>
+							<br>
+							<li class="topmatcolordetail">Top Mat Color: <span> Super White</span>
+							</li>
+							<!--<li class="bottommatcolordetail">Bottom Mat Color: <span> Super White</span></li>-->
+							<li class="glassdetail">Glass: <span>Regular Glass</span>
+							</li>
+							<li class="hardwaredetail">Hardware: <span>Easy To Hang</span>
+							</li>
+							<br>
+							<li class="price">Price : <span id="popupPrice">$9.25</span>
+							</li>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal  in testCs" style="display: none;" id="imageCropModal" tabindex="-1" role="dialog"
+	aria-hidden="false">
+	<div class="modal-dialog FloaterCustomDialog" role="document" style="height: 100%;">
+		<div class="modal-content NewCustomContent" style="height: 100%;">
+			<div class="modal-body" style="height: 100%;">
+				<div class="container nopadding" style="height: 100%;">
+					<div class="row" style="height: 100%;">
+						<div class="col-xs-12 nopadding" style="height: 100%;">
+							<div class="col-xs-12 nopadding cropAreaFloater">
+								<p class="edit-image-title">Edit Your Image</p>
+								<div class="uploadedImgDiv">
+									<div class="col-md-12 col-sm-12 nopadding edit-preview">
+										<!-- <img src="https://cdn4.arttoframe.com/custom_framing/preview/actions/getSampleImageCropLetter.php?top_mat_swatch=61&amp;shape={{shapeId}}" > -->
+										<img src="" #positionPreview id="positionPreview">
+
+									</div>
+								</div>
+							</div>
+							<div class="size-alert" style="display: none;">
+								<div class="tooltiptextImage col-xs-12">
+									<div class="col-sm-9" style="padding-right:0px;">
+										<p id="tooltipmsgImage">
+											Please select area of minimum size 3" x 3" Maximum size {{frameMaxWidth}}" x
+											{{frameMaxHeight}}"
+										</p>
+									</div>
+
+								</div>
+							</div>
+							<div class="col-xs-12 nopadding" style="top:-1px;">
+								<ul class="UploadImgFloater" style="display: none;">
+									<li class="active">
+										<img src="{{Helper.cdn1}}/images/free-on.png" data-value="free">
+									</li>
+									<li>
+										<img src="{{Helper.cdn1}}/images/ratio-off.png" data-value="ratio">
+									</li>
+									<li>
+										<img src="{{Helper.cdn1}}/images/square-off.png"
+											data-value="square">
+									</li>
+									<li>
+										<img src="{{Helper.cdn1}}/images/4x3-off.png" data-value="4:3">
+									</li>
+									<li>
+										<img src="{{Helper.cdn1}}/images/16x9-off.png" data-value="16:9">
+									</li>
+								</ul>
+								<ul class="imagecropSuboptions">
+									<li style="display: none;">
+										<img src="{{Helper.cdn1}}/images/flip_inactive.svg" id="flip_icon">
+									</li>
+									<li style="display: none;">
+										<img src="{{Helper.cdn1}}/images/new-off.png" id="filterFloater">
+									</li>
+									<!--  <li>
+                                        <img src="https://cdn1.arttoframe.com/images/rotate-19.svg" id="rotate_img" class="clockwiserotation" (click)="rotateImg()">
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn1.arttoframe.com/images/upload-19.svg" id="uploadNewImg" (click)="uploadImageFromEditPopup()">
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn1.arttoframe.com/images/delete-19.svg" id="deleteImg" style="display: inline;" (click)="deleteImage()">
+                                    </li>
+                                    <li>
+                                        <img src="https://cdn4.arttoframe.com/images/apply-19.svg" id="applyChanges" (click)="applyChanges()">
+                                    </li> -->
+									<li>
+										<img src="{{Helper.cdn1}}/images/crop-new-18-03.svg"
+											id="cropOptionsNew" (click)="cropOnclick()">
+									</li>
+
+									<li>
+										<img src="{{Helper.cdn1}}/images/rotate-new-17-03.svg"
+											id="rotate_img" class="clockwiserotation" (click)="rotateImg()">
+									</li>
+									<li>
+										<img src="{{Helper.cdn1}}/images/upload-new-17-03.svg"
+											id="uploadNewImg" (click)="uploadImageFromEditPopup()">
+									</li>
+									<li>
+										<img src="{{Helper.cdn1}}/images/delete-new-17-03.svg"
+											id="deleteImg" style="display: inline;"
+											(click)="deleteImage(); task.cancel()">
+									</li>
+									<li>
+										<img src="{{Helper.cdn4}}/images/confirm-new-17-03.svg"
+											id="applyChanges" (click)="applyChanges()">
+									</li>
+
+								</ul>
+							</div>
+							<div class="col-xs-12 nopadding">
+								<ul class="CropOptionsFloater" style="display:none">
+									<li>
+										<img src="{{Helper.cdn3}}/images/Free_size_icon.png"
+											id="FreeSizeFl">
+									</li>
+									<li>
+										<img src="{{Helper.cdn4}}/images/Ratio_icon.png" id="ratioSizeFl">
+									</li>
+									<li>
+										<img src="{{Helper.cdn4}}/images/square_icon.png" id="SquareSizeFl">
+									</li>
+									<li>
+										<img src="{{Helper.cdn1}}/images/4x3_icon.png" id="CustomSizeFl">
+									</li>
+									<li>
+										<img src="{{Helper.cdn3}}/images/16x9_icon.png" id="CustomSize2Fl">
+									</li>
+									<li>
+										<img src="">
+										<p>White</p>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--  -->
+<img src="" id="img1">
+<div class="addToCartLoader" style="display: none;">
+	<div>
+		<img src="{{Helper.cdn1}}/images/loader-letterart.gif" width="50" height="50" alt="Adding to Cart">
+		<span>Adding to cart...</span>
+	</div>
+</div>
+
+<!-- cart  model  -->
+<div class="modal fade AddingToCart_modal" id="AddingToCart_modal" role="dialog">
+	<div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="ATC_area">
+
+					<div class="lds-ring">
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+					</div>
+					<p class="cart_title">Adding to cart</p>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade AddingToCart_success" id="AddingToCart_success" role="dialog">
+	<div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="ATC_area">
+					<img src="https://www.arttoframe.com/images/Check_20.png" class="img-responsive center-block">
+
+					<p class="cart_titles">Item added to cart</p>
+					<a href="https://www.arttoframe.com/cart" class="Checkout_btn"><img
+							src="https://www.arttoframe.com/images/checkout-button_20.svg" alt=""
+							class="img-responsive center-block"></a>
+					<a (click)="reload()" class="keepshopping_btn"><img
+							src="https://www.arttoframe.com/images/keep-shopping-button_0904.svg" alt=""
+							class="img-responsive center-block"></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<img class="cartImage" src="" alt="" style="display: none;">
+<input type="hidden" name="" class="matAvailable" value="1">
+
+<!-- Modal For Max Frame Size -->
+<div class="modal fade" id="myModal_maxsize" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body" style="padding: 1px !important;">
+                <img src="https://www.arttoframe.com/custom_framing/preview/images/cf_max_size_validation.png"
+                    height="60" width="60" style="display: block;
+    margin-left: auto;
+    margin-right: auto;">
+                <h3
+                    style="text-align: center; color:#0095DA;font-size: 24px;margin-top: 20px;margin-bottom:10px;font-family: 'Product Sans',Arial,sans!important">
+                    Not available in this size</h3>
+                <!-- <h4
+                    style="text-align: center; color:#0095DA;font-size: 18px;margin-top: 10px;margin-bottom: 10px;font-family: 'Product Sans',Arial,sans!important">
+                    Please choose a new frame from Frame tab bellow.</h4> -->
+                <h5
+                    style="text-align: center; color: red;font-size: 14px;margin-top: 10px;margin-bottom: 10px;font-family: 'Product Sans',Arial,sans!important">
+                    {{maxFrameSize}} </h5>
+
+				<span *ngIf="isSelectedFrameNotFound">
+				<h5
+				style="text-align: center; font-size: 14px;margin-top: 10px;margin-left: 10px;margin-bottom: 10px;font-family: 'Product Sans',Arial,sans!important">
+				Selected frame max size: <span style="font-weight: bold;">{{frameMaxWidthOld}}x{{frameMaxHeightOld}}</span></h5>
+				<!-- <h5
+				style="text-align: center; font-size: 14px;margin-top: 10px;margin-left: 10px;margin-bottom: 10px;font-family: 'Product Sans',Arial,sans!important">
+				The complete size should be less that or equal to {{frameMaxWidth}}"x{{frameMaxHeight}}" </h5> -->
+				<h5
+				style="text-align: center; font-size: 14px;margin-top: 10px;margin-left: 10px;margin-bottom: 10px;font-family: 'Product Sans',Arial,sans!important;">
+				we have updated to an available frame <span style="font-weight: bold;">{{showingChangeFrameMessage}}</span> because the previous selected frame was not available based on the size requested. </h5>
+			</span>
+				<span *ngIf="isSelectedMatNotFound">
+                <!-- <h4
+                    style="text-align: center; color:#0095DA;font-size: 18px;margin-top: 10px;margin-bottom: 10px;font-family: 'Product Sans',Arial,sans!important">
+                    Please choose a new mat from Frame tab bellow.</h4> -->
+
+				<h5
+				style="text-align: center; font-size: 14px;margin-top: 10px;margin-left: 10px;margin-bottom: 10px;font-family: 'Product Sans',Arial,sans!important">
+				Selected mat max size: <span style="font-weight: bold;">32x40</span></h5>
+				<!-- <h5
+				style="text-align: center; font-size: 14px;margin-top: 10px;margin-left: 10px;margin-bottom: 10px;font-family: 'Product Sans',Arial,sans!important">
+				The complete size should be less that or equal to {{frameMaxWidth}}"x{{frameMaxHeight}}" </h5> -->
+				<h5
+				style="text-align: center; font-size: 14px;margin-top: 10px;margin-left: 10px;margin-bottom: 10px;font-family: 'Product Sans',Arial,sans!important;">
+				we have updated to an available mat <span style="font-weight: bold;">{{showingChangeMatMessage}}</span> because the previous selected mat was not available based on the size requested. </h5>
+				</span>
+				
+            </div>
+            <div class="modal-footer" style="padding: 15px;">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="modal fade" id="myModal_maxsize_mat" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body" style="padding: 1px !important;">
+                <img src="https://www.arttoframe.com/custom_framing/preview/images/cf_max_size_validation.png"
+                    height="60" width="60" style="display: block;
+    margin-left: auto;
+    margin-right: auto;">
+                <h3
+                    style="text-align: center; color:#0095DA;font-size: 24px;margin-top: 20px;margin-bottom:10px;font-family: 'Product Sans',Arial,sans!important">
+                    Not available in this size</h3>
+                <h4
+                    style="text-align: center; color:#0095DA;font-size: 18px;margin-top: 10px;margin-bottom: 10px;font-family: 'Product Sans',Arial,sans!important">
+                    Please choose a new mat from mat tab bellow.</h4>
+                <h5
+                    style="text-align: center; color: red;font-size: 14px;margin-top: 10px;margin-bottom: 10px;font-family: 'Product Sans',Arial,sans!important">
+                    {{maxMatSize}} </h5>
+
+				<h5
+				style="text-align: center; font-size: 14px;margin-top: 10px;margin-left: 10px;margin-bottom: 10px;font-family: 'Product Sans',Arial,sans!important">
+				Selected frame max size: <span style="font-weight: bold;">{{matMaxWidthOld}}x{{matMaxHeightOld}}</span></h5>
+				
+				<h5
+				style="text-align: center; font-size: 14px;margin-top: 10px;margin-left: 10px;margin-bottom: 10px;font-family: 'Product Sans',Arial,sans!important;">
+				we have updated to an available mat <span style="font-weight: bold;">{{showingChangeMatMessage}}</span> because the previous selected mat was not available based on the size requested. </h5>
+				
+            </div>
+            <div class="modal-footer" style="padding: 15px;">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div> -->
+<!--  -->
