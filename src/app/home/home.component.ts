@@ -1045,8 +1045,8 @@ export class HomeComponent implements OnInit {
     // Collage
     // let obj = {"type":"collage_dm","mat_id":"95","frame_code":"FRBW26079","frame_size":"20x8","mat_color1":"Super-White","mat_color2":"Black","mat_code1":"61","mat_code2":"89","HTTP_USER_AGENT":"Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1","page_type":"M","glass_type":"14","product_type":78}
     // Mat only
-    let obj = {"mat_only":"1","image_size":"8x10","mat_color1":"Super White","mat_color2":"Black","mat_color3":"","mats":"double","mat_id":"custom-dm-8x10","HTTP_USER_AGENT":"Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1","frame_size":"8x10","glass_type":"14","product_type":69}
-    localStorage.setItem("defaultParam", JSON.stringify(obj))
+    // let obj = {"mat_only":"1","image_size":"8x10","mat_color1":"Super White","mat_color2":"Black","mat_color3":"","mats":"double","mat_id":"custom-dm-8x10","HTTP_USER_AGENT":"Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1","frame_size":"8x10","glass_type":"14","product_type":69}
+    // localStorage.setItem("defaultParam", JSON.stringify(obj))
     this.defaultParamObj = JSON.parse(localStorage.getItem("defaultParam"));
     if (this.defaultParamObj != null || this.defaultParamObj != undefined) {
       var self = this;
@@ -12316,4 +12316,9 @@ if(this.productCode == "38"){
         }
         self.selectedGlassVal = self.getDefaultGlassID();
         console.log("Selected glass 6 => ", this.selectedGlassVal)
-        cons
+        console.log(self.selectedGlassVal)
+      })
+    }
+    this.changeGlass = false;
+  }
+}
